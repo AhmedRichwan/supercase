@@ -1,15 +1,15 @@
 package com.rashwan.myapplication
+
 import android.annotation.SuppressLint
 import android.app.AlertDialog
-import android.app.Application
 import android.app.DatePickerDialog
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
-import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.add_case.view.*
@@ -25,33 +25,23 @@ import kotlinx.android.synthetic.main.add_case.view.et8casePapers
 import kotlinx.android.synthetic.main.add_case.view.et9caseNotes
 import kotlinx.android.synthetic.main.update_case.view.*
 import java.text.SimpleDateFormat
+import java.time.DayOfWeek
+import java.time.LocalDate
+import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
 import kotlin.collections.ArrayList
-
-import android.widget.TextView
-import androidx.annotation.NonNull
-import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.core.content.ContextCompat
-import androidx.drawerlayout.widget.DrawerLayout
-import com.google.android.material.navigation.NavigationView
-import kotlinx.android.synthetic.main.activity_main.addfltbtn
-import kotlinx.android.synthetic.main.gshow.*
-import java.time.*
-import java.time.format.DateTimeFormatter.ofPattern
 
 
 class MainActivity : AppCompatActivity() {
     var mRef: DatabaseReference? = null
     var mNotelist: ArrayList<Casesinfo>? = null
-    var ahmed:String?=null
-    //comment
 
 
     @SuppressLint("ResourceType")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        getSupportActionBar()?.hide()
+        supportActionBar?.hide()
         setContentView(R.layout.activity_main)
         var database: FirebaseDatabase = FirebaseDatabase.getInstance()
         mRef = database.getReference("Cases")
@@ -101,7 +91,7 @@ class MainActivity : AppCompatActivity() {
                 update_case_view.et8casePapers.setText(casy.casePapers)
                 update_case_view.et9caseNotes.setText(casy.caseNotes)
                 update_case_view.et10caseModifiedDate.setText(casy.caseModifiedDate)
-                update_case_view.et7caseSessionDate.setOnClickListener() {
+                update_case_view.et7caseSessionDate.setOnClickListener {
                     pickDateValidation(update_case_view.et7caseSessionDate)
                 }
 
@@ -190,28 +180,9 @@ class MainActivity : AppCompatActivity() {
 
 
 }
-    override fun onStart() {
-        super.onStart()
-//        mRef?.addValueEventListener(object : ValueEventListener {
-//            override fun onCancelled(p0: DatabaseError) {
-//            }
-//
-//            override fun onDataChange(p0: DataSnapshot) {
-//                mNotelist?.clear()
-//                for (n in p0.children) {
-//                    val case = n.getValue(Casesinfo::class.java)
-//                    if (n.child("isCaseDeleted").value.toString() == "0") {
-//                        mNotelist!!.add(0, case!!)
-//                    }
-//                }
-//                val noteadapter = NotesAdapter(application, mNotelist!!)
-//                new_list_view.adapter = noteadapter
-//            }
-//        })
-    }
 
 
-fun LVA(view: View){
+    fun LVA(view: View) {
   if (view.id==(R.id.cwbtn)){
       mRef?.addValueEventListener(object : ValueEventListener {
           override fun onCancelled(p0: DatabaseError) {
@@ -229,13 +200,13 @@ fun LVA(view: View){
                   val today = LocalDate.now()
                   // Go backward to get Monday
                   var firstdayofweek = today
-                  while (firstdayofweek.getDayOfWeek() !== DayOfWeek.SATURDAY)
+                  while (firstdayofweek.dayOfWeek !== DayOfWeek.SATURDAY)
                   {
                       firstdayofweek = firstdayofweek.minusDays(1)
                   }
                   // Go forward to get Sunday
                   var lastdayofweek = today
-                  while (lastdayofweek.getDayOfWeek() !== DayOfWeek.FRIDAY)
+                  while (lastdayofweek.dayOfWeek !== DayOfWeek.FRIDAY)
                   {
                       lastdayofweek = lastdayofweek.plusDays(1)
                   }
@@ -276,13 +247,13 @@ fun LVA(view: View){
                   val today = LocalDate.now()
                   // Go backward to get Monday
                   var firstdayofweek = today
-                  while (firstdayofweek.getDayOfWeek() !== DayOfWeek.SATURDAY)
+                  while (firstdayofweek.dayOfWeek !== DayOfWeek.SATURDAY)
                   {
                       firstdayofweek = firstdayofweek.minusDays(1)
                   }
                   // Go forward to get Sunday
                   var lastdayofweek = today
-                  while (lastdayofweek.getDayOfWeek() !== DayOfWeek.FRIDAY)
+                  while (lastdayofweek.dayOfWeek !== DayOfWeek.FRIDAY)
                   {
                       lastdayofweek = lastdayofweek.plusDays(1)
                   }
@@ -319,13 +290,13 @@ fun LVA(view: View){
                   val today = LocalDate.now()
                   // Go backward to get Monday
                   var firstdayofweek = today
-                  while (firstdayofweek.getDayOfWeek() !== DayOfWeek.SATURDAY)
+                  while (firstdayofweek.dayOfWeek !== DayOfWeek.SATURDAY)
                   {
                       firstdayofweek = firstdayofweek.minusDays(1)
                   }
                   // Go forward to get Sunday
                   var lastdayofweek = today
-                  while (lastdayofweek.getDayOfWeek() !== DayOfWeek.FRIDAY)
+                  while (lastdayofweek.dayOfWeek !== DayOfWeek.FRIDAY)
                   {
                       lastdayofweek = lastdayofweek.plusDays(1)
                   }
@@ -364,13 +335,13 @@ fun LVA(view: View){
                   val today = LocalDate.now()
                   // Go backward to get Monday
                   var firstdayofweek = today
-                  while (firstdayofweek.getDayOfWeek() !== DayOfWeek.SATURDAY)
+                  while (firstdayofweek.dayOfWeek !== DayOfWeek.SATURDAY)
                   {
                       firstdayofweek = firstdayofweek.minusDays(1)
                   }
                   // Go forward to get Sunday
                   var lastdayofweek = today
-                  while (lastdayofweek.getDayOfWeek() !== DayOfWeek.FRIDAY)
+                  while (lastdayofweek.dayOfWeek !== DayOfWeek.FRIDAY)
                   {
                       lastdayofweek = lastdayofweek.plusDays(1)
                   }
@@ -470,11 +441,11 @@ fun LVA(view: View){
                 val myCalendar = GregorianCalendar(year, month, dayOfMonth)
                 var dayOfWeek = myCalendar.get(Calendar.DAY_OF_WEEK)
                 var daylong =
-                    (SimpleDateFormat("EEEE", Locale.getDefault()).format(myCalendar.getTime()))
+                    (SimpleDateFormat("EEEE", Locale.getDefault()).format(myCalendar.time))
                 var mydateformated = (SimpleDateFormat(
                     "yyyy-MM-dd",
                     Locale.getDefault()
-                ).format(myCalendar.getTime()))
+                ).format(myCalendar.time))
                 val timenowformated =
                     LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
 
@@ -504,9 +475,9 @@ fun LVA(view: View){
 
 
         dpd.datePicker.firstDayOfWeek = Calendar.SUNDAY
-        dpd.datePicker.minDate = (c.getTimeInMillis())
+        dpd.datePicker.minDate = (c.timeInMillis)
         c.add(Calendar.YEAR, 1)
-        dpd.datePicker.maxDate = (c.getTimeInMillis())
+        dpd.datePicker.maxDate = (c.timeInMillis)
 
         dpd.show()
         return
