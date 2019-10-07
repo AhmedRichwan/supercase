@@ -44,6 +44,9 @@ import java.time.format.DateTimeFormatter.ofPattern
 class MainActivity : AppCompatActivity() {
     var mRef: DatabaseReference? = null
     var mNotelist: ArrayList<Casesinfo>? = null
+    var ahmed:String?=null
+    //comment
+
 
     @SuppressLint("ResourceType")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -73,7 +76,7 @@ class MainActivity : AppCompatActivity() {
                 var casy = mNotelist?.get(p2)!!
                 val alertBuilder = AlertDialog.Builder(this)
                 var update_case_view = layoutInflater.inflate(R.layout.update_case, null)
-                if (casy.IsCaseDeleted==1){
+                if (casy.IsCaseDeleted==0){
                     update_case_view = layoutInflater.inflate(R.layout.update_case, null)
 
                 }
