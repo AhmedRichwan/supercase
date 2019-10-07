@@ -24,7 +24,7 @@
     <string name="monday">Monday</string>
     <string name="tuesday">Tuesday</string>
     <string name="wednesday">Wednesday</string>
-    <string name="Undelete">استعادة</string>
+    <string name="Cancel">الغاء</string>
     <string name="editandrestore">تعديل واستعادة</string>
     <string name="deleted_cases">Deleted Cases</string>
     <string name="cw">جلسات الاسبوع الحالي</string>

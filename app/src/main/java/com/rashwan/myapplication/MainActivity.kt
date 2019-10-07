@@ -48,22 +48,12 @@ class MainActivity : AppCompatActivity() {
         mNotelist = ArrayList()
         addfltbtn.setOnClickListener { showdialogeAddnote() }
 
-//        GBtn1.setOnClickListener() {
-//            startActivity(Intent(this, Gshow::class.java))
-//        }
-//        cwbtn.setOnClickListener(){
-//            startActivity(Intent(this, cw::class.java))
-//        }
-//        nwbtn.setOnClickListener() {
-//            startActivity(Intent(this, nw::class.java))
-//        }
-
-
-
 
         new_list_view.onItemLongClickListener =
             AdapterView.OnItemLongClickListener { p0, p1, p2, p3 ->
-                var casy = mNotelist?.get(p2)!!
+                var sortedList = mNotelist?.sortedWith(compareBy({ it.caseSessionDate }))?.toList()
+                var casy = sortedList?.get(p2)!!
+
                 val alertBuilder = AlertDialog.Builder(this)
                 var update_case_view = layoutInflater.inflate(R.layout.update_case, null)
                 if (casy.IsCaseDeleted==0){
@@ -79,7 +69,6 @@ class MainActivity : AppCompatActivity() {
 
                 alertDialog.setView(update_case_view)
                 alertDialog.show()
-
                 update_case_view.et1caseNum.setText(casy.caseNum)
                 update_case_view.et2caseYear.setText(casy.caseYear)
                 update_case_view.et3caseCount.setText(casy.caseCount)
@@ -99,6 +88,7 @@ class MainActivity : AppCompatActivity() {
                 update_case_view.updbtn.setOnClickListener {
 
                     var childRef = mRef?.child(casy.Id!!)
+
                     var afterUpdate = Casesinfo(
                         casy.Id!!,
                         update_case_view.et1caseNum.text.toString(),
@@ -123,6 +113,18 @@ class MainActivity : AppCompatActivity() {
 
                     var casy = mNotelist?.get(p2)!!
                     var childRef = mRef?.child(casy.Id!!)
+                    var toast: String? = null
+                    var casedeletionstate = 0
+                    if (casy.IsCaseDeleted == 0) {
+                        casedeletionstate = 1
+                        toast = "تم الحذف بنجاح"
+                    } else {
+                        casedeletionstate = 0
+
+                        toast = "تم الاسترجاع بنجاح"
+
+
+                    }
                     var afterDelete = Casesinfo(
                         casy.Id!!,
                         update_case_view.et1caseNum.text.toString(),
@@ -135,22 +137,22 @@ class MainActivity : AppCompatActivity() {
                         update_case_view.et8casePapers.text.toString(),
                         update_case_view.et9caseNotes.text.toString(),
                         (LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd EEEE HH-mm"))),
-                        1
+                        casedeletionstate
                     )
 
                     childRef!!.setValue(afterDelete)
 
-                    Toast.makeText(this, "تم الحذف بنجاح", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, " $toast", Toast.LENGTH_LONG).show()
 
                     alertDialog.dismiss()
                 }
                 true
             }
 
-
         new_list_view.onItemClickListener =
             AdapterView.OnItemClickListener { parent, view, position, id ->
-                var case: Casesinfo = mNotelist?.get(position)!!
+                var sortedList = mNotelist?.sortedWith(compareBy({ it.caseSessionDate }))?.toList()
+                var case = sortedList?.get(position)!!
                 case.caseNum
                 case.caseYear
                 case.caseCount
@@ -175,194 +177,181 @@ class MainActivity : AppCompatActivity() {
             }
 
 
-
-
-
-
 }
 
 
     fun LVA(view: View) {
-  if (view.id==(R.id.cwbtn)){
-      mRef?.addValueEventListener(object : ValueEventListener {
-          override fun onCancelled(p0: DatabaseError) {
-          }
+        when {
+            view.id == (R.id.cwbtn) -> mRef?.addValueEventListener(object : ValueEventListener {
+                override fun onCancelled(p0: DatabaseError) {
+                }
 
-          override fun onDataChange(p0: DataSnapshot) {
+                override fun onDataChange(p0: DataSnapshot) {
 
-              mNotelist?.clear()
+                    mNotelist?.clear()
 
-              for (n in p0.children) {
-                  val case = n.getValue(Casesinfo::class.java)
-                  var checkDeleted = n.child("isCaseDeleted").value
-                  var caseSessionDate = n.child("caseSessionDate").value.toString().toLong()
+                    for (n in p0.children) {
+                        val case = n.getValue(Casesinfo::class.java)
+                        var checkDeleted = n.child("isCaseDeleted").value
+                        var caseSessionDate = n.child("caseSessionDate").value.toString().toLong()
 
-                  val today = LocalDate.now()
-                  // Go backward to get Monday
-                  var firstdayofweek = today
-                  while (firstdayofweek.dayOfWeek !== DayOfWeek.SATURDAY)
-                  {
-                      firstdayofweek = firstdayofweek.minusDays(1)
-                  }
-                  // Go forward to get Sunday
-                  var lastdayofweek = today
-                  while (lastdayofweek.dayOfWeek !== DayOfWeek.FRIDAY)
-                  {
-                      lastdayofweek = lastdayofweek.plusDays(1)
-                  }
+                        val today = LocalDate.now()
+                        // Go backward to get Monday
+                        var firstdayofweek = today
+                        while (firstdayofweek.dayOfWeek !== DayOfWeek.SATURDAY) {
+                            firstdayofweek = firstdayofweek.minusDays(1)
+                        }
+                        // Go forward to get Sunday
+                        var lastdayofweek = today
+                        while (lastdayofweek.dayOfWeek !== DayOfWeek.FRIDAY) {
+                            lastdayofweek = lastdayofweek.plusDays(1)
+                        }
 
-                  val firstDayOfWeek =tools.strToEpoch(firstdayofweek.toString())
-                  val lastDayOfWeek = tools.strToEpoch(lastdayofweek.toString())
+                        val firstDayOfWeek = tools.strToEpoch(firstdayofweek.toString())
+                        val lastDayOfWeek = tools.strToEpoch(lastdayofweek.toString())
 
-                  if (checkDeleted.toString() == "0" &&(caseSessionDate>=firstDayOfWeek) && (caseSessionDate<=lastDayOfWeek))
-                  {
-                      mNotelist!!.add(0, case!!)
-                  }
+                        if (checkDeleted.toString() == "0" && (caseSessionDate >= firstDayOfWeek) && (caseSessionDate <= lastDayOfWeek)) {
+                            mNotelist!!.add(0, case!!)
+                        }
 
 
+                    }
+//
+                    var sortedList =
+                        mNotelist?.sortedWith(compareBy({ it.caseSessionDate }))?.toList()
 
-              }
+                    val noteadapter = NotesAdapter(application, sortedList!!)
+                    new_list_view.adapter = noteadapter
+                }
+            })
+            view.id == (R.id.nwbtn) -> mRef?.addValueEventListener(object : ValueEventListener {
+                override fun onCancelled(p0: DatabaseError) {
+                }
 
-              var sortedList = mNotelist?.sortedWith(compareBy({ it.caseSessionDate }))?.toList()
+                override fun onDataChange(p0: DataSnapshot) {
 
-              val noteadapter = NotesAdapter(application, sortedList!!)
+                    mNotelist?.clear()
 
-              new_list_view.adapter=noteadapter
-          }
-      })
+                    for (n in p0.children) {
+                        val case = n.getValue(Casesinfo::class.java)
+                        var checkDeleted = n.child("isCaseDeleted").value
+                        var caseSessionDate = n.child("caseSessionDate").value.toString().toLong()
+                        val today = LocalDate.now()
+                        // Go backward to get Monday
+                        var firstdayofweek = today
+                        while (firstdayofweek.dayOfWeek !== DayOfWeek.SATURDAY) {
+                            firstdayofweek = firstdayofweek.minusDays(1)
+                        }
+                        // Go forward to get Sunday
+                        var lastdayofweek = today
+                        while (lastdayofweek.dayOfWeek !== DayOfWeek.FRIDAY) {
+                            lastdayofweek = lastdayofweek.plusDays(1)
+                        }
 
-   }else if (view.id==(R.id.nwbtn)){
-      mRef?.addValueEventListener(object : ValueEventListener {
-          override fun onCancelled(p0: DatabaseError) {
-          }
+                        val firstDayOfWeek = tools.strToEpoch(firstdayofweek.toString()) + 604800
+                        val lastDayOfWeek = tools.strToEpoch(lastdayofweek.toString()) + 604800
 
-          override fun onDataChange(p0: DataSnapshot) {
-
-              mNotelist?.clear()
-
-              for (n in p0.children) {
-                  val case = n.getValue(Casesinfo::class.java)
-                  var checkDeleted = n.child("isCaseDeleted").value
-                  var caseSessionDate = n.child("caseSessionDate").value.toString().toLong()
-                  val today = LocalDate.now()
-                  // Go backward to get Monday
-                  var firstdayofweek = today
-                  while (firstdayofweek.dayOfWeek !== DayOfWeek.SATURDAY)
-                  {
-                      firstdayofweek = firstdayofweek.minusDays(1)
-                  }
-                  // Go forward to get Sunday
-                  var lastdayofweek = today
-                  while (lastdayofweek.dayOfWeek !== DayOfWeek.FRIDAY)
-                  {
-                      lastdayofweek = lastdayofweek.plusDays(1)
-                  }
-
-                  val firstDayOfWeek =tools.strToEpoch(firstdayofweek.toString())+604800
-                  val lastDayOfWeek = tools.strToEpoch(lastdayofweek.toString())+604800
-
-                  if (checkDeleted.toString() == "0" &&(caseSessionDate>=firstDayOfWeek) && (caseSessionDate<=lastDayOfWeek))
-                  {
-                      mNotelist!!.add(0, case!!)
-                  }
+                        if (checkDeleted.toString() == "0" && (caseSessionDate >= firstDayOfWeek) && (caseSessionDate <= lastDayOfWeek)) {
+                            mNotelist!!.add(0, case!!)
+                        }
 
 
-              }
-              val noteadapter = NotesAdapter(application, mNotelist!!)
-              new_list_view.adapter=noteadapter
-          }
+                    }
+                    var sortedList =
+                        mNotelist?.sortedWith(compareBy({ it.caseSessionDate }))?.toList()
 
-      })
+                    val noteadapter = NotesAdapter(application, sortedList!!)
+                    new_list_view.adapter = noteadapter
+                }
 
-  }else if (view.id==(R.id.allbtn)){
-      mRef?.addValueEventListener(object : ValueEventListener {
-          override fun onCancelled(p0: DatabaseError) {
-          }
+            })
+            view.id == (R.id.allbtn) -> mRef?.addValueEventListener(object : ValueEventListener {
+                override fun onCancelled(p0: DatabaseError) {
+                }
 
-          override fun onDataChange(p0: DataSnapshot) {
+                override fun onDataChange(p0: DataSnapshot) {
 
-              mNotelist?.clear()
+                    mNotelist?.clear()
 
-              for (n in p0.children) {
-                  val case = n.getValue(Casesinfo::class.java)
-                  var checkDeleted = n.child("isCaseDeleted").value
-                  var caseSessionDate = n.child("caseSessionDate").value.toString().toLong()
-                  val today = LocalDate.now()
-                  // Go backward to get Monday
-                  var firstdayofweek = today
-                  while (firstdayofweek.dayOfWeek !== DayOfWeek.SATURDAY)
-                  {
-                      firstdayofweek = firstdayofweek.minusDays(1)
-                  }
-                  // Go forward to get Sunday
-                  var lastdayofweek = today
-                  while (lastdayofweek.dayOfWeek !== DayOfWeek.FRIDAY)
-                  {
-                      lastdayofweek = lastdayofweek.plusDays(1)
-                  }
+                    for (n in p0.children) {
+                        val case = n.getValue(Casesinfo::class.java)
+                        var checkDeleted = n.child("isCaseDeleted").value
+                        var caseSessionDate = n.child("caseSessionDate").value.toString().toLong()
+                        val today = LocalDate.now()
+                        // Go backward to get Monday
+                        var firstdayofweek = today
+                        while (firstdayofweek.dayOfWeek !== DayOfWeek.SATURDAY) {
+                            firstdayofweek = firstdayofweek.minusDays(1)
+                        }
+                        // Go forward to get Sunday
+                        var lastdayofweek = today
+                        while (lastdayofweek.dayOfWeek !== DayOfWeek.FRIDAY) {
+                            lastdayofweek = lastdayofweek.plusDays(1)
+                        }
 
-                  val firstDayOfWeek =tools.strToEpoch(firstdayofweek.toString())+604800
-                  val lastDayOfWeek = tools.strToEpoch(lastdayofweek.toString())+604800
+                        val firstDayOfWeek = tools.strToEpoch(firstdayofweek.toString()) + 604800
+                        val lastDayOfWeek = tools.strToEpoch(lastdayofweek.toString()) + 604800
 
-                  if (checkDeleted.toString() == "0" )//&&(caseSessionDate>=firstDayOfWeek) && (caseSessionDate<=lastDayOfWeek))
-                  {
-                      mNotelist!!.add(0, case!!)
-                  }
-
-
-              }
-              var sortedList = mNotelist?.sortedWith(compareBy({ it.caseSessionDate }))?.toList()
-
-              val noteadapter = NotesAdapter(application, sortedList!!)
-              new_list_view.adapter=noteadapter
-          }
-
-      })
-
-  }else if (view.id==(R.id.delbtn)){
-      mRef?.addValueEventListener(object : ValueEventListener {
-          override fun onCancelled(p0: DatabaseError) {
-          }
-
-          override fun onDataChange(p0: DataSnapshot) {
-
-              mNotelist?.clear()
-
-              for (n in p0.children) {
-                  val case = n.getValue(Casesinfo::class.java)
-                  var checkDeleted = n.child("isCaseDeleted").value
-                  var caseSessionDate = n.child("caseSessionDate").value.toString().toLong()
-                  val today = LocalDate.now()
-                  // Go backward to get Monday
-                  var firstdayofweek = today
-                  while (firstdayofweek.dayOfWeek !== DayOfWeek.SATURDAY)
-                  {
-                      firstdayofweek = firstdayofweek.minusDays(1)
-                  }
-                  // Go forward to get Sunday
-                  var lastdayofweek = today
-                  while (lastdayofweek.dayOfWeek !== DayOfWeek.FRIDAY)
-                  {
-                      lastdayofweek = lastdayofweek.plusDays(1)
-                  }
-
-                  val firstDayOfWeek =tools.strToEpoch(firstdayofweek.toString())+604800
-                  val lastDayOfWeek = tools.strToEpoch(lastdayofweek.toString())+604800
-
-                  if (checkDeleted.toString() == "1" )//&&(caseSessionDate>=firstDayOfWeek) && (caseSessionDate<=lastDayOfWeek))
-                  {
-                      mNotelist!!.add(0, case!!)
-                  }
+                        if (checkDeleted.toString() == "0")//&&(caseSessionDate>=firstDayOfWeek) && (caseSessionDate<=lastDayOfWeek))
+                        {
+                            mNotelist!!.add(0, case!!)
+                        }
 
 
-              }
-              val noteadapter = NotesAdapter(application, mNotelist!!)
-              new_list_view.adapter=noteadapter
-          }
+                    }
 
-      })
+//                    var sortedList = mNotelist?.sortedWith(compareBy({ it.caseSessionDate }))?.toList()
+//                    val noteadapter = NotesAdapter(application, sortedList!!)
+                    var sortedList =
+                        mNotelist?.sortedWith(compareBy({ it.caseSessionDate }))?.toList()
 
-  }
+                    val noteadapter = NotesAdapter(application, sortedList!!)
+                    new_list_view.adapter = noteadapter
+                }
+
+            })
+            view.id == (R.id.delbtn) -> mRef?.addValueEventListener(object : ValueEventListener {
+                override fun onCancelled(p0: DatabaseError) {
+                }
+
+                override fun onDataChange(p0: DataSnapshot) {
+
+                    mNotelist?.clear()
+
+                    for (n in p0.children) {
+                        val case = n.getValue(Casesinfo::class.java)
+                        var checkDeleted = n.child("isCaseDeleted").value
+                        var caseSessionDate = n.child("caseSessionDate").value.toString().toLong()
+                        val today = LocalDate.now()
+                        // Go backward to get Monday
+                        var firstdayofweek = today
+                        while (firstdayofweek.dayOfWeek !== DayOfWeek.SATURDAY) {
+                            firstdayofweek = firstdayofweek.minusDays(1)
+                        }
+                        // Go forward to get Sunday
+                        var lastdayofweek = today
+                        while (lastdayofweek.dayOfWeek !== DayOfWeek.FRIDAY) {
+                            lastdayofweek = lastdayofweek.plusDays(1)
+                        }
+
+                        val firstDayOfWeek = tools.strToEpoch(firstdayofweek.toString()) + 604800
+                        val lastDayOfWeek = tools.strToEpoch(lastdayofweek.toString()) + 604800
+
+                        if (checkDeleted.toString() == "1")//&&(caseSessionDate>=firstDayOfWeek) && (caseSessionDate<=lastDayOfWeek))
+                        {
+                            mNotelist!!.add(0, case!!)
+                        }
+
+
+                    }
+                    var sortedList =
+                        mNotelist?.sortedWith(compareBy({ it.caseSessionDate }))?.toList()
+                    val noteadapter = NotesAdapter(application, sortedList!!)
+                    new_list_view.adapter = noteadapter
+                }
+
+            })
+        }
 }
 
     fun showdialogeAddnote() {
