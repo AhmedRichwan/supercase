@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/rowstyle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+android:background="@color/bk1"
+        android:orientation="vertical">
+
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:weightSum="100"
+        android:orientation="horizontal">
+
+        <TextView
+                android:layout_weight="25"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="1dp"
+            android:layout_marginEnd="1dp"
+            android:background="@drawable/statelarg"
+                android:backgroundTint="@color/row1"
+                android:textColor="#E7ECE9"
+            android:text="@string/caseCountYear"
+            android:textAlignment="center"
+
+            android:textSize="18sp" />
+
+        <TextView
+
+                android:layout_weight="25"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+            android:layout_marginStart="1dp"
+            android:layout_marginEnd="1dp"
+                android:background="@drawable/statelarg"
+                android:backgroundTint="@color/row2"
+                android:textColor="#E7ECE9"
+            android:text="@string/caseCount"
+            android:textAlignment="center"
+            android:textSize="18sp" />
+
+        <TextView
+
+                android:layout_weight="25"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+            android:layout_marginStart="1dp"
+            android:layout_marginEnd="1dp"
+            android:baselineAligned="false"
+            android:text="@string/caseYear"
+            android:textAlignment="center"
+                android:background="@drawable/statelarg"
+                android:backgroundTint="@color/row1"
+                android:textColor="#E7ECE9"
+            android:textSize="18sp" />
+
+        <TextView
+                android:layout_weight="25"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="1dp"
+                android:text="@string/caseNum"
+                android:textAlignment="center"
+                android:background="@drawable/statelarg"
+                android:backgroundTint="@color/row2"
+                android:textColor="#E7ECE9"
+                android:textSize="18sp" />
+
+
+    </LinearLayout>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+
+            android:weightSum="100"
+            android:orientation="horizontal">
+
+        <TextView
+                android:id="@+id/caseCountYear"
+                android:layout_weight="25"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="1dp"
+                android:text="@string/caseCountYear"
+                android:background="@drawable/statelarg"
+                android:backgroundTint="@color/row1s"
+                android:textColor="@color/myYellow"
+                android:textAlignment="center"
+
+                android:textSize="18sp" />
+
+        <TextView
+
+                android:id="@+id/caseCount"
+                android:layout_weight="25"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="1dp"
+                android:background="@drawable/statelarg"
+                android:backgroundTint="@color/row2s"
+                android:textColor="@color/myYellow"
+                android:text="@string/caseCount"
+                android:textAlignment="center"
+                android:textSize="18sp" />
+
+        <TextView
+                android:id="@+id/caseYear"
+                android:layout_weight="25"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="1dp"
+                android:background="@drawable/statelarg"
+                android:backgroundTint="@color/row1s"
+                android:textColor="@color/myYellow"                android:baselineAligned="false"
+                android:text="@string/caseYear"
+                android:textAlignment="center"
+                android:textSize="18sp" />
+
+        <TextView
+                android:id="@+id/caseNum"
+                android:layout_weight="25"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="1dp"
+                android:background="@drawable/statelarg"
+                android:backgroundTint="@color/row2s"
+                android:textColor="@color/myYellow"
+                android:text="@string/caseNum"
+                android:textAlignment="center"
+                android:textSize="18sp" />
+
+
+    </LinearLayout>
+
+
+    <TextView
+            android:id="@+id/caseAccuser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/aldrich"
+            android:text="@string/caseAccuser"
+            android:textAlignment="center"
+            android:layout_marginBottom="5dp"
+android:textColor="@color/mywhite"
+            android:background="@drawable/statelarg"
+            android:backgroundTint="@color/row2s"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/caseSessionDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+            android:layout_marginBottom="5dp"
+
+            android:background="@drawable/statelarg"
+            android:backgroundTint="@color/row1s"
+        android:text="@string/caseSessionDate"
+        android:textAlignment="center"
+            android:textColor="@color/mywhite"
+
+        android:textSize="18sp" />
+
+    <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="6dp"
+            android:background="#EAF1F1"
+            android:text=" "
+            android:layout_marginBottom="5dp"
+
+            android:textAlignment="center" />
+
+</LinearLayout>

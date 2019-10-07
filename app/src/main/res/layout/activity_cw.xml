@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/mlayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bkgrnd">
+
+<TextView
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/cw"
+        android:textSize="40sp"
+        android:background="@drawable/statelarg"
+        android:textColor="@color/mywhite"
+        android:gravity="center_horizontal"
+    />
+
+    <ListView
+            android:id="@+id/GListView"
+            android:layout_width="match_parent"
+            android:layout_height="660dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="1dp"
+            android:paddingStart="1dp"
+            android:paddingEnd="1dp" />
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

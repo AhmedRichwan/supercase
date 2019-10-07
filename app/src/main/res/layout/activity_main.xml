@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:background="@drawable/bkgrnd"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:weightSum="6"
+            android:layout_marginTop="5dp"
+           android:orientation="horizontal">
+
+        <Button
+                android:layout_weight="1"
+                android:id="@+id/delbtn"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/statelarg"
+                android:text="@string/deletedcases"
+                android:textColor="@color/mdtp_white"
+                android:textSize="12sp"
+                android:onClick="LVA"
+                android:clickable="true"
+                android:textStyle="normal|bold|italic" />
+
+        <Button
+                android:id="@+id/nwbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/statelarg"
+                android:onClick="LVA"
+                android:text="@string/nw"
+                android:textColor="@color/mdtp_white"
+                android:textSize="12sp"
+                android:textStyle="normal|bold|italic" />
+
+        <Button
+                android:id="@+id/cwbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:background="@drawable/statelarg"
+                android:clickable="true"
+                android:onClick="LVA"
+                android:text="@string/cw"
+                android:textColor="@color/mdtp_white"
+                android:textSize="12sp"
+                android:textStyle="normal|bold|italic" />
+
+        <Button
+                android:id="@+id/allbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/statelarg"
+                android:onClick="LVA"
+                android:text="@string/all"
+                android:textColor="@color/mdtp_white"
+                android:textSize="12sp"
+                android:textStyle="normal|bold|italic" />
+
+    </LinearLayout>
+
+    <ListView
+            android:id="@+id/new_list_view"
+            android:layout_marginTop="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="522dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginEnd="1dp"
+            android:paddingStart="1dp"
+            android:paddingEnd="1dp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/addfltbtn"
+            android:layout_width="123dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="16dp"
+            android:src="@android:drawable/ic_input_add"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.881"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.989" />
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/statelarg"
+        android:orientation="vertical">
+
+
+
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+        <LinearLayout
+                android:layout_width="317dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+            <EditText
+                    android:id="@+id/et1caseNum"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="10dp"
+                    android:autofillHints=""
+                    android:background="#4501579B"
+                    android:ems="10"
+                    android:hint="@string/caseNum"
+                    android:inputType="number" />
+
+            <EditText
+                    android:id="@+id/et2caseYear"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginEnd="10dp"
+                    android:autofillHints=""
+                    android:ems="10"
+                    android:hint="@string/caseYear"
+                    android:inputType="number" />
+
+            <EditText
+                    android:id="@+id/et3caseCount"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginEnd="10dp"
+                    android:autofillHints=""
+                    android:background="#4501579B"
+                    android:ems="10"
+                    android:hint="@string/caseCount"
+                    android:inputType="number" />
+
+            <EditText
+                    android:id="@+id/et4caseCountYear"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginEnd="10dp"
+                    android:autofillHints=""
+                    android:ems="10"
+                    android:hint="@string/caseCountYear"
+                    android:inputType="number" />
+
+            <EditText
+                    android:id="@+id/et5caseAccuser"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginEnd="10dp"
+                    android:autofillHints=""
+                    android:background="#4501579B"
+                    android:ems="10"
+                    android:hint="@string/caseAccuser"
+                    android:inputType="textPersonName" />
+
+
+            <EditText
+                    android:id="@+id/et6caseCreater"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginEnd="10dp"
+                    android:autofillHints=""
+                    android:ems="10"
+                    android:hint="@string/caseCreater"
+                    android:inputType="textPersonName" />
+
+            <TextView
+                    android:id="@+id/et7caseSessionDate"
+
+
+                    android:layout_width="match_parent"
+                    android:layout_height="37dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginEnd="10dp"
+                    android:autoSizeTextType="none"
+                    android:autofillHints=""
+                    android:background="#4501579B"
+
+                    android:elegantTextHeight="false"
+                    android:ems="10"
+                    android:freezesText="false"
+                    android:gravity="center_vertical"
+                    android:hint="@string/caseSessionDate"
+                    android:textAllCaps="true"
+                    android:textSize="18sp" />
+
+
+            <EditText
+                    android:id="@+id/et8casePapers"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginEnd="10dp"
+                    android:autofillHints=""
+                    android:ems="10"
+                    android:hint="@string/casePapers"
+                    android:inputType="textPersonName" />
+
+            <EditText
+                    android:id="@+id/et10caseModifiedDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginEnd="10dp"
+                    android:autofillHints=""
+
+                    android:background="#4501579B"
+                    android:ems="10"
+                    android:hint="@string/caseModifiedDate" />
+
+
+            <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+                <EditText
+                        android:id="@+id/et9caseNotes"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginEnd="10dp"
+                        android:autofillHints=""
+
+                        android:ems="10"
+                        android:hint="@string/caseNotes"
+                        android:inputType="textMultiLine" />
+
+
+            </ScrollView>
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="177dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginEnd="20dp"
+                android:orientation="vertical">
+
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:autofillHints=""
+                    android:background="#4501579B"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:text="@string/caseNum" />
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:autofillHints=""
+                    android:ems="10"
+                    android:gravity="center"
+                    android:text="@string/caseYear" />
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:autofillHints=""
+                    android:background="#4501579B"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:text="@string/caseCount" />
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:autofillHints=""
+                    android:ems="10"
+                    android:gravity="center"
+                    android:text="@string/caseCountYear" />
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:autofillHints=""
+                    android:background="#4501579B"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:text="@string/caseAccuser" />
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:autofillHints=""
+                    android:ems="10"
+                    android:gravity="center"
+                    android:text="@string/caseAccuser" />
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:autofillHints=""
+                    android:background="#4501579B"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:text="@string/caseSessionDate" />
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:autofillHints=""
+                    android:ems="10"
+                    android:gravity="center"
+                    android:text="@string/casePapers" />
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:autofillHints=""
+                    android:background="#4501579B"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:text="@string/caseModifiedDate" />
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:autofillHints=""
+                    android:ems="10"
+                    android:gravity="center"
+                    android:text="@string/caseNotes" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <Button
+            android:id="@+id/addbtn"
+            android:layout_width="117dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/state_fron_btn"
+            android:gravity="center|center_horizontal|center_vertical"
+            android:text="@string/add"
+            android:textColor="@color/mdtp_red"
+            android:textSize="30sp" />
+
+</LinearLayout>

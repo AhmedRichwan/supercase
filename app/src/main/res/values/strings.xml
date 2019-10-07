@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Super Case</string>
+
+    <string name="caseaddtitle">بيانات القضية </string>
+    <string name="caseNum">رقم القضية  </string>
+    <string name="caseYear"> عام القضية </string>
+    <string name="caseCount">رقم الحصر </string>
+    <string name="caseCountYear">عام الحصر </string>
+    <string name="caseAccuser">المتهم </string>
+    <string name="caseCreater">المدعي </string>
+    <string name="caseSessionDate">تاريخ الجلسة </string>
+    <string name="casePapers">مستندات القضية </string>
+    <string name="caseNotes">ملاحظات القضية </string>
+    <string name="caseModifiedDate"> تسجيل البيانات </string>
+    <string name="Addsessioninfo">  اضف جلسة جديدة </string>
+    <string name="insertcaselay">  اضف </string>
+    <string name="updatecasely">  عدل </string>
+    <string name="deletecaselay">  احذف </string>
+
+
+    <string name="add">اضف</string>
+    <string name="button">Button</string>
+    <string name="title">title</string>
+    <string name="monday">Monday</string>
+    <string name="tuesday">Tuesday</string>
+    <string name="wednesday">Wednesday</string>
+    <string name="Undelete">استعادة</string>
+    <string name="editandrestore">تعديل واستعادة</string>
+    <string name="deleted_cases">Deleted Cases</string>
+    <string name="cw">جلسات الاسبوع الحالي</string>
+    <string name="nw">جلسات الاسبوع المقبل</string>
+    <string name="all">جميع الجلسات</string>
+    <string name="deletedcases">القضايا المحذوفة</string>
+
+
+</resources>

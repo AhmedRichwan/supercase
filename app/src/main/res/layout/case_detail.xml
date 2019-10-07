@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/rowstyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+                android:gravity="center"
+                android:weightSum="5"
+                android:layout_marginBottom="5dp"
+            android:orientation="horizontal">
+
+
+            <TextView
+                    android:id="@+id/caseCountYear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/state_fron_btn"
+android:layout_weight="1"
+                    android:text="@string/caseCountYear"
+                    android:textAlignment="center"
+                    android:textColor="#311B92"
+                    android:textSize="24sp" />
+
+            <TextView
+
+                    android:id="@+id/caseCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+
+                    android:background="@drawable/state_fron_btn"
+                    android:backgroundTint="#5733691E"
+                    android:text="@string/caseCount"
+                    android:textAlignment="center"
+                    android:textColor="#311B92"
+                    android:textSize="24sp" />
+
+            <TextView
+                    android:id="@+id/caseYear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/state_fron_btn"
+                    android:baselineAligned="false"
+                    android:text="@string/caseYear"
+                    android:layout_weight="1"
+
+                    android:textAlignment="center"
+                    android:textColor="#311B92"
+                    android:textSize="24sp" />
+
+            <TextView
+                    android:id="@+id/caseNum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+
+                    android:background="@drawable/state_fron_btn"
+                    android:backgroundTint="#5733691E"
+                    android:text="@string/caseNum"
+                    android:textAlignment="center"
+                    android:textColor="#311B92"
+                    android:textSize="24sp" />
+
+        </LinearLayout>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+android:gravity="center"
+            android:weightSum="4"
+            android:layout_marginBottom="5dp"
+
+            android:background="@color/mdtp_white"
+            android:orientation="horizontal">
+
+
+        <TextView
+
+                android:id="@+id/caseCountYearV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+android:layout_weight="1"
+                android:background="@drawable/state_fron_btn"
+                android:text="@string/caseCountYear"
+                android:textAlignment="center"
+                android:textColor="#311B92"
+                android:textSize="24sp" />
+
+        <TextView
+
+                android:id="@+id/caseCountV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+
+                android:background="@drawable/state_fron_btn"
+                android:backgroundTint="#5733691E"
+                android:text="@string/caseCount"
+                android:textAlignment="center"
+                android:textColor="#311B92"
+                android:textSize="24sp" />
+
+        <TextView
+                android:layout_weight="1"
+
+                android:id="@+id/caseYearV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/state_fron_btn"
+                android:baselineAligned="false"
+                android:text="@string/caseYear"
+                android:textAlignment="center"
+                android:textColor="#311B92"
+                android:textSize="24sp" />
+
+        <TextView
+                android:id="@+id/caseNumV"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+
+                android:background="@drawable/state_fron_btn"
+                android:backgroundTint="#5733691E"
+                android:text="@string/caseNum"
+                android:textAlignment="center"
+                android:textColor="#311B92"
+                android:textSize="24sp" />
+
+    </LinearLayout>
+
+
+    <TextView
+
+            android:id="@+id/caseAccuser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/state_fron_btn"
+
+            android:backgroundTint="#4601579B"
+            android:paddingHorizontal="@dimen/default_gap"
+            android:text="@string/caseAccuser"
+            android:textSize="24sp" />
+
+    <TextView
+            android:id="@+id/caseCreater"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/state_fron_btn"
+            android:paddingHorizontal="@dimen/default_gap"
+
+            android:text="@string/caseCreater"
+            android:textSize="24sp" />
+
+    <TextView
+            android:id="@+id/caseSessionDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/state_fron_btn"
+            android:backgroundTint="#4601579B"
+
+            android:paddingHorizontal="@dimen/default_gap"
+            android:text="@string/caseSessionDate"
+            android:textSize="24sp" />
+
+    <TextView
+            android:id="@+id/casePapers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="5dp"
+
+            android:background="@drawable/state_fron_btn"
+            android:paddingHorizontal="@dimen/default_gap"
+            android:text="@string/casePapers"
+            android:textSize="24sp" />
+
+    <TextView
+            android:id="@+id/caseModifiedDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/state_fron_btn"
+            android:backgroundTint="#4601579B"
+
+            android:paddingHorizontal="@dimen/default_gap"
+            android:singleLine="false"
+            android:text="@string/caseModifiedDate"
+            android:textSize="20sp" />
+
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="448dp"
+
+            android:paddingHorizontal="@dimen/default_gap">
+
+        <TextView
+                android:id="@+id/caseNotes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/state_fron_btn"
+                android:paddingHorizontal="@dimen/default_gap"
+                android:text="@string/caseNotes"
+                android:textSize="24sp" />
+
+    </ScrollView>
+
+</LinearLayout>

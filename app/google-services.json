@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "616433145095",
+    "firebase_url": "https://the1stpro.firebaseio.com",
+    "project_id": "the1stpro",
+    "storage_bucket": "the1stpro.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:616433145095:android:1cf6af13b1c3b727",
+        "android_client_info": {
+          "package_name": "com.rashwan.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "616433145095-2erlb2eprtgc2h61nnkovpmefefnpv0h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rashwan.myapplication",
+            "certificate_hash": "776b8cc6f91316306e96c50dc2d5f8cc1cc8fd8a"
+          }
+        },
+        {
+          "client_id": "616433145095-2m43cl96fjku1r9nn69eq7ktrh0hi4v5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaj0OV45A6W4hFJEsRx22XAP14rvi1UPU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "616433145095-2m43cl96fjku1r9nn69eq7ktrh0hi4v5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
