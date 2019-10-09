@@ -1,5 +1,6 @@
 package com.rashwan.myapplication
 
+//import pl.kitek.rvswipetodelete.SwipeToDeleteCallback
 import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.app.DatePickerDialog
@@ -23,8 +24,7 @@ import kotlinx.android.synthetic.main.add_case.view.et6caseCreater
 import kotlinx.android.synthetic.main.add_case.view.et7caseSessionDate
 import kotlinx.android.synthetic.main.add_case.view.et8casePapers
 import kotlinx.android.synthetic.main.add_case.view.et9caseNotes
-import kotlinx.android.synthetic.main.update_case.view.*
-//import pl.kitek.rvswipetodelete.SwipeToDeleteCallback
+import kotlinx.android.synthetic.main.edit_case.view.*
 import java.text.SimpleDateFormat
 import java.time.DayOfWeek
 import java.time.LocalDate
@@ -56,11 +56,15 @@ class MainActivity : AppCompatActivity() {
                 var casy = sortedList?.get(p2)!!
 
                 val alertBuilder = AlertDialog.Builder(this)
-//                var update_case_view = layoutInflater.inflate(R.layout.update_case, null)
-//                if (casy.IsCaseDeleted==0){
-//                    update_case_view = layoutInflater.inflate(R.layout.update_case, null)
-
                 var update_case_view = layoutInflater.inflate(R.layout.edit_case, null)
+
+//                var update_case_view = layoutInflater.inflate(R.layout.update_case, null)
+                if (casy.IsCaseDeleted == 1) {
+                    update_case_view.delbtn.text = "استرجاع"
+                } else {
+                    update_case_view.delbtn.text = "حذف"
+                }
+
 
 
 
@@ -68,6 +72,8 @@ class MainActivity : AppCompatActivity() {
 
                 alertDialog.setView(update_case_view)
                 alertDialog.show()
+                update_case_view.et1caseNumT.text =
+                    " تعديل بيانات القضية رقم : " + casy.caseNum + " "
                 update_case_view.et1caseNum.setText(casy.caseNum)
                 update_case_view.et2caseYear.setText(casy.caseYear)
                 update_case_view.et3caseCount.setText(casy.caseCount)
@@ -109,22 +115,9 @@ class MainActivity : AppCompatActivity() {
                     alertDialog.dismiss()
                 }
                 update_case_view.delbtn.setOnClickListener {
-
-                    var casy = mNotelist?.get(p2)!!
                     var childRef = mRef?.child(casy.Id!!)
-                    var toast: String? = null
-                    var casedeletionstate = 0
-                    if (casy.IsCaseDeleted == 0) {
-                        casedeletionstate = 1
-                        toast = "تم الحذف بنجاح"
-                    } else {
-                        casedeletionstate = 0
 
-                        toast = "تم الاسترجاع بنجاح"
-
-
-                    }
-                    var afterDelete = Casesinfo(
+                    var afterUpdate = Casesinfo(
                         casy.Id!!,
                         update_case_view.et1caseNum.text.toString(),
                         update_case_view.et2caseYear.text.toString(),
@@ -136,13 +129,21 @@ class MainActivity : AppCompatActivity() {
                         update_case_view.et8casePapers.text.toString(),
                         update_case_view.et9caseNotes.text.toString(),
                         (LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd EEEE HH-mm"))),
-                        casedeletionstate
+                        if (casy.IsCaseDeleted == 1) {
+                            0
+                        } else {
+                            1
+                        }
                     )
+                    childRef!!.setValue(afterUpdate)
+                    //  if (view2.ite) {
+                    Toast.makeText(this, "تم الحذف", Toast.LENGTH_LONG).show()
+                    //}
+                    alertDialog.dismiss()
 
-                    childRef!!.setValue(afterDelete)
 
-                    Toast.makeText(this, " $toast", Toast.LENGTH_LONG).show()
-
+                }
+                update_case_view.cancelbtn.setOnClickListener {
                     alertDialog.dismiss()
                 }
                 true
@@ -401,7 +402,7 @@ class MainActivity : AppCompatActivity() {
                 )
                 mRef!!.child(id).setValue(myCase)
             var testfun = tools.strToEpoch("2010-05-01").toString()
-                Toast.makeText(this, testfun, Toast.LENGTH_LONG).show()
+                //  Toast.makeText(this, testfun, Toast.LENGTH_LONG).show()
                 var sortedList = mNotelist?.sortedWith(compareBy({ it.caseSessionDate }))?.toList()
                 val noteadapter = NotesAdapter(application, sortedList!!)
                 new_list_view.adapter=noteadapter

@@ -3,65 +3,178 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_marginTop="10dp"
+        android:background="@drawable/layout_background"
 
+        android:orientation="vertical"
+        android:outlineSpotShadowColor="@color/myblue">
+
+    <TextView
+
+            android:id="@+id/et1caseNumT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="1dp"
+            android:layout_marginEnd="1dp"
+            android:background="@drawable/statelarg"
+            android:backgroundTint="@color/myblackLight"
+            android:padding="10dp"
+            android:text="@string/caseNum"
+            android:textAlignment="center"
+            android:textColor="#E7ECE9"
+            android:textSize="22sp" />
 
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
+
             android:orientation="vertical">
 
-        <EditText
-                android:id="@+id/et1caseNum"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="40dp"
-                android:layout_weight="1"
-                android:autofillHints=""
-                android:background="#4501579B"
-                android:ems="10"
-                android:hint="@string/caseNum"
-                android:inputType="number" />
+        <LinearLayout
 
-        <EditText
-                android:id="@+id/et2caseYear"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginStart="40dp"
-                android:layout_marginEnd="40dp"
-                android:layout_weight="1"
-                android:autofillHints=""
-                android:ems="10"
-                android:hint="@string/caseYear"
-                android:inputType="number" />
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal"
+                android:weightSum="100">
 
-        <EditText
-                android:id="@+id/et3caseCount"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginStart="40dp"
-                android:layout_marginEnd="40dp"
-                android:layout_weight="1"
-                android:autofillHints=""
-                android:background="#4501579B"
-                android:ems="10"
-                android:hint="@string/caseCount"
-                android:inputType="number" />
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_weight="25"
+                    android:background="@drawable/statelarg"
+                    android:backgroundTint="@color/row1"
+                    android:text="@string/caseCountYear"
+                    android:textAlignment="center"
+                    android:textColor="#E7ECE9"
+                    android:textSize="18sp" />
 
-        <EditText
-                android:id="@+id/et4caseCountYear"
+            <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_weight="25"
+                    android:background="@drawable/statelarg"
+                    android:backgroundTint="@color/row2"
+                    android:text="@string/caseCount"
+                    android:textAlignment="center"
+                    android:textColor="#E7ECE9"
+                    android:textSize="18sp" />
+
+            <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_weight="25"
+                    android:background="@drawable/statelarg"
+                    android:backgroundTint="@color/row1"
+                    android:baselineAligned="false"
+                    android:text="@string/caseYear"
+                    android:textAlignment="center"
+                    android:textColor="#E7ECE9"
+                    android:textSize="18sp" />
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_weight="25"
+                    android:background="@drawable/statelarg"
+                    android:backgroundTint="@color/row2"
+                    android:text="@string/caseNum"
+                    android:textAlignment="center"
+                    android:textColor="#E7ECE9"
+                    android:textSize="18sp" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginStart="40dp"
-                android:layout_marginEnd="40dp"
-                android:layout_weight="1"
-                android:autofillHints=""
-                android:ems="10"
-                android:hint="@string/caseCountYear"
-                android:inputType="number" />
+                android:layout_height="34dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:weightSum="4">
+
+            <EditText
+                    android:id="@+id/et4caseCountYear"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:autofillHints=""
+                    android:background="@drawable/background_edittextbox"
+                    android:backgroundTint="@color/row1s"
+                    android:hint="@string/caseCountYear"
+                    android:inputType="number"
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="#F0998A8A"
+                    android:textSize="24sp" />
+
+            <EditText
+                    android:id="@+id/et3caseCount"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:autofillHints=""
+                    android:background="@drawable/background_edittextbox"
+                    android:backgroundTint="@color/row2s"
+                    android:hint="@string/caseCount"
+                    android:inputType="number"
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="#F0998A8A"
+                    android:textSize="24sp" />
+
+            <EditText
+                    android:id="@+id/et2caseYear"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:autofillHints=""
+                    android:background="@drawable/background_edittextbox"
+                    android:backgroundTint="@color/row1s"
+                    android:hint="@string/caseYear"
+                    android:inputType="number"
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="#F0998A8A"
+                    android:textSize="24sp" />
+
+            <EditText
+                    android:id="@+id/et1caseNum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/background_edittextbox"
+                    android:backgroundTint="@color/row2s"
+                    android:hint="@string/caseNum"
+                    android:inputType="number"
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="#F0998A8A"
+                    android:textSize="24sp" />
+
+        </LinearLayout>
+
 
         <EditText
                 android:id="@+id/et5caseAccuser"
@@ -69,7 +182,6 @@
                 android:layout_height="40dp"
                 android:layout_marginStart="40dp"
                 android:layout_marginEnd="40dp"
-                android:layout_weight="1"
                 android:autofillHints=""
                 android:background="#4501579B"
                 android:ems="10"
@@ -83,7 +195,6 @@
                 android:layout_height="40dp"
                 android:layout_marginStart="40dp"
                 android:layout_marginEnd="40dp"
-                android:layout_weight="1"
                 android:autofillHints=""
                 android:ems="10"
                 android:hint="@string/caseCreater"
@@ -97,7 +208,6 @@
                 android:layout_height="37dp"
                 android:layout_marginStart="40dp"
                 android:layout_marginEnd="40dp"
-                android:layout_weight="1"
                 android:autoSizeTextType="none"
                 android:autofillHints=""
                 android:background="#4501579B"
@@ -117,7 +227,6 @@
                 android:layout_height="40dp"
                 android:layout_marginStart="40dp"
                 android:layout_marginEnd="40dp"
-                android:layout_weight="1"
                 android:autofillHints=""
                 android:ems="10"
                 android:hint="@string/casePapers"
@@ -129,7 +238,6 @@
                 android:layout_height="40dp"
                 android:layout_marginStart="40dp"
                 android:layout_marginEnd="40dp"
-                android:layout_weight="1"
                 android:autofillHints=""
 
                 android:background="#4501579B"
@@ -143,7 +251,6 @@
                 android:layout_height="40dp"
                 android:layout_marginStart="40dp"
                 android:layout_marginEnd="40dp"
-                android:layout_weight="1"
                 android:autofillHints=""
 
                 android:ems="10"
@@ -152,8 +259,11 @@
     </LinearLayout>
 
     <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="69dp"
+            android:id="@+id/btns"
+            android:layout_width="365dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="20dp"
             android:layout_marginTop="20dp"
             android:gravity="center"
             android:orientation="horizontal"
@@ -161,30 +271,45 @@
 
         <Button
 
-                android:id="@+id/delbtn"
-                android:layout_width="120dp"
-                android:layout_height="60dp"
-
-                android:background="@drawable/statelarg"
-                android:gravity="center"
-                android:text="@string/Cancel"
-
-                android:textAllCaps="true"
+                android:id="@+id/cancelbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/background_cancel"
+                android:text="@string/cancel"
+                android:textColor="@color/mywhite"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
         <Button
 
-                android:id="@+id/updbtn"
-                android:layout_width="158dp"
-                android:layout_height="60dp"
-                android:layout_marginStart="70dp"
-                android:background="@drawable/background_edit"
-
-                android:text="@string/editandrestore"
-                android:textAllCaps="true"
+                android:id="@+id/delbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:background="@drawable/background_delete"
+                android:gravity="center"
+                android:text="@string/delete"
+                android:textColor="@color/mywhite"
                 android:textSize="24sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+
+                />
+
+        <Button
+
+                android:id="@+id/updbtn"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/background_edit"
+                android:text="@string/edit"
+                android:textColor="@color/mywhite"
+                android:textSize="24sp"
+                android:textStyle="bold"
+
+                />
+
 
     </LinearLayout>
 

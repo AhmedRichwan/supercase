@@ -24,13 +24,16 @@
     <string name="monday">Monday</string>
     <string name="tuesday">Tuesday</string>
     <string name="wednesday">Wednesday</string>
-    <string name="Cancel">الغاء</string>
+
     <string name="editandrestore">تعديل واستعادة</string>
     <string name="deleted_cases">Deleted Cases</string>
     <string name="cw">جلسات الاسبوع الحالي</string>
     <string name="nw">جلسات الاسبوع المقبل</string>
     <string name="all">جميع الجلسات</string>
     <string name="deletedcases">القضايا المحذوفة</string>
+    <string name="edit">تعديل</string>
+    <string name="cancel">الغاء</string>
+    <string name="delete">حذف</string>
 
 
 </resources>

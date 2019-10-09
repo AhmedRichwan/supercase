@@ -19,8 +19,8 @@ import kotlinx.android.synthetic.main.add_case.view.et6caseCreater
 import kotlinx.android.synthetic.main.add_case.view.et7caseSessionDate
 import kotlinx.android.synthetic.main.add_case.view.et8casePapers
 import kotlinx.android.synthetic.main.add_case.view.et9caseNotes
+import kotlinx.android.synthetic.main.edit_case.view.*
 import kotlinx.android.synthetic.main.gshow.*
-import kotlinx.android.synthetic.main.update_case.view.*
 import java.text.SimpleDateFormat
 import java.time.DayOfWeek
 import java.time.LocalDate
@@ -47,7 +47,7 @@ class cw : AppCompatActivity() {
             AdapterView.OnItemLongClickListener { p0, p1, p2, p3 ->
                 var sortedList = mNotelist?.sortedWith(compareBy({ it.caseSessionDate }))?.toList()
                 val alertBuilder = AlertDialog.Builder(this)
-                var view2 = layoutInflater.inflate(R.layout.update_case, null)
+                var view2 = layoutInflater.inflate(R.layout.edit_case, null)
                 val alertDialog = alertBuilder.create()
                 var casy = sortedList?.get(p2)!!
               //  if (casy.IsCaseDeleted==1){ mlayout.background= ContextCompat.getDrawable(this, R.drawable.bk)}
