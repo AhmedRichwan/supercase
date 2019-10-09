@@ -3,16 +3,12 @@ package com.rashwan.myapplication
 import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.AdapterView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.core.content.ContextCompat
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.*
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_main.view.*
-import kotlinx.android.synthetic.main.add_case.view.*
 import kotlinx.android.synthetic.main.add_case.view.et10caseModifiedDate
 import kotlinx.android.synthetic.main.add_case.view.et1caseNum
 import kotlinx.android.synthetic.main.add_case.view.et2caseYear
@@ -24,16 +20,13 @@ import kotlinx.android.synthetic.main.add_case.view.et7caseSessionDate
 import kotlinx.android.synthetic.main.add_case.view.et8casePapers
 import kotlinx.android.synthetic.main.add_case.view.et9caseNotes
 import kotlinx.android.synthetic.main.gshow.*
-import kotlinx.android.synthetic.main.restorecase.view.*
 import kotlinx.android.synthetic.main.update_case.view.*
-import kotlinx.android.synthetic.main.update_case.view.updbtn
 import java.text.SimpleDateFormat
 import java.time.DayOfWeek
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter
-import java.time.temporal.WeekFields
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -45,7 +38,7 @@ class cw : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        getSupportActionBar()?.hide()
+        supportActionBar?.hide()
         setContentView(R.layout.activity_cw)
         var database: FirebaseDatabase = FirebaseDatabase.getInstance()
         mRef = database.getReference("Cases")
@@ -71,7 +64,7 @@ class cw : AppCompatActivity() {
                 view2.et8casePapers.setText(casy.casePapers)
                 view2.et10caseModifiedDate.setText(casy.caseModifiedDate)
 
-                view2.et7caseSessionDate.setOnClickListener() {
+                view2.et7caseSessionDate.setOnClickListener {
                     pickDateValidation(view2.et7caseSessionDate)
 
 
@@ -179,13 +172,13 @@ class cw : AppCompatActivity() {
                     val today = LocalDate.now()
                     // Go backward to get Monday
                     var firstdayofweek = today
-                    while (firstdayofweek.getDayOfWeek() !== DayOfWeek.SATURDAY)
+                    while (firstdayofweek.dayOfWeek !== DayOfWeek.SATURDAY)
                     {
                         firstdayofweek = firstdayofweek.minusDays(1)
                     }
                     // Go forward to get Sunday
                     var lastdayofweek = today
-                    while (lastdayofweek.getDayOfWeek() !== DayOfWeek.FRIDAY)
+                    while (lastdayofweek.dayOfWeek !== DayOfWeek.FRIDAY)
                     {
                         lastdayofweek = lastdayofweek.plusDays(1)
                     }
@@ -231,11 +224,11 @@ class cw : AppCompatActivity() {
                 val myCalendar = GregorianCalendar(year, month, dayOfMonth)
                 var dayOfWeek = myCalendar.get(Calendar.DAY_OF_WEEK)
                 var daylong =
-                    (SimpleDateFormat("EEEE", Locale.getDefault()).format(myCalendar.getTime()))
+                    (SimpleDateFormat("EEEE", Locale.getDefault()).format(myCalendar.time))
                 var mydateformated = (SimpleDateFormat(
                     "yyyy-MM-dd",
                     Locale.getDefault()
-                ).format(myCalendar.getTime()))
+                ).format(myCalendar.time))
                 val timenowformated =
                     LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
 
@@ -266,9 +259,9 @@ class cw : AppCompatActivity() {
 
 
         dpd.datePicker.firstDayOfWeek = Calendar.SUNDAY
-        dpd.datePicker.minDate = (c.getTimeInMillis())
+        dpd.datePicker.minDate = (c.timeInMillis)
         c.add(Calendar.YEAR, 1)
-        dpd.datePicker.maxDate = (c.getTimeInMillis())
+        dpd.datePicker.maxDate = (c.timeInMillis)
 
         dpd.show()
         return

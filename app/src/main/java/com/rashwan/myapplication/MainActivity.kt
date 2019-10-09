@@ -24,6 +24,7 @@ import kotlinx.android.synthetic.main.add_case.view.et7caseSessionDate
 import kotlinx.android.synthetic.main.add_case.view.et8casePapers
 import kotlinx.android.synthetic.main.add_case.view.et9caseNotes
 import kotlinx.android.synthetic.main.update_case.view.*
+//import pl.kitek.rvswipetodelete.SwipeToDeleteCallback
 import java.text.SimpleDateFormat
 import java.time.DayOfWeek
 import java.time.LocalDate
@@ -55,15 +56,13 @@ class MainActivity : AppCompatActivity() {
                 var casy = sortedList?.get(p2)!!
 
                 val alertBuilder = AlertDialog.Builder(this)
-                var update_case_view = layoutInflater.inflate(R.layout.update_case, null)
-                if (casy.IsCaseDeleted==0){
-                    update_case_view = layoutInflater.inflate(R.layout.update_case, null)
+//                var update_case_view = layoutInflater.inflate(R.layout.update_case, null)
+//                if (casy.IsCaseDeleted==0){
+//                    update_case_view = layoutInflater.inflate(R.layout.update_case, null)
 
-                }
-             else{
-                    update_case_view = layoutInflater.inflate(R.layout.restorecase, null)
+                var update_case_view = layoutInflater.inflate(R.layout.edit_case, null)
 
-                }
+
 
                 val alertDialog = alertBuilder.create()
 
@@ -149,8 +148,10 @@ class MainActivity : AppCompatActivity() {
                 true
             }
 
+
         new_list_view.onItemClickListener =
             AdapterView.OnItemClickListener { parent, view, position, id ->
+
                 var sortedList = mNotelist?.sortedWith(compareBy({ it.caseSessionDate }))?.toList()
                 var case = sortedList?.get(position)!!
                 case.caseNum
@@ -176,7 +177,12 @@ class MainActivity : AppCompatActivity() {
                 startActivity(caseIntent)
             }
 
+        var sortedList =
+            mNotelist?.sortedWith(compareBy({ it.caseSessionDate }))?.toList()
 
+        val noteadapter = NotesAdapter(application, sortedList!!)
+
+//        RV.adapter= SimpleAdapter()
 }
 
 
