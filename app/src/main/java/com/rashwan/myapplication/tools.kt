@@ -1,6 +1,5 @@
 package com.rashwan.myapplication
 
-import android.text.TextUtils.replace
 import java.time.Instant
 import java.time.LocalDateTime
 import java.time.ZoneId
@@ -17,6 +16,12 @@ class tools {
 
             return LocalDateTime.ofInstant(Instant.ofEpochSecond(e), ZoneId.systemDefault())
                 .format(DateTimeFormatter.ofPattern("yyyy-MM-dd EEEE"))
+        }
+
+        fun epochToStrWithoutEEE(e: Long): String {
+
+            return LocalDateTime.ofInstant(Instant.ofEpochSecond(e), ZoneId.systemDefault())
+                .format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
         }
 
         fun strToEpoch( l: String): Long {

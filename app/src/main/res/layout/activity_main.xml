@@ -16,19 +16,19 @@
            android:orientation="horizontal">
 
         <Button
-                android:layout_weight="1"
                 android:id="@+id/delbtn"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:background="@drawable/statelarg"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/background_selected_t"
+                android:clickable="true"
+                android:onClick="LVA"
                 android:text="@string/deletedcases"
                 android:textColor="@color/mdtp_white"
                 android:textSize="12sp"
-                android:onClick="LVA"
-                android:clickable="true"
                 android:textStyle="normal|bold|italic" />
 
         <Button
@@ -39,7 +39,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginEnd="5dp"
                 android:layout_weight="1"
-                android:background="@drawable/statelarg"
+                android:background="@drawable/background_selected_t"
                 android:onClick="LVA"
                 android:text="@string/nw"
                 android:textColor="@color/mdtp_white"
@@ -52,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="1"
-                android:background="@drawable/statelarg"
+                android:background="@drawable/background_selected_t"
                 android:clickable="true"
                 android:onClick="LVA"
                 android:text="@string/cw"
@@ -68,7 +68,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginEnd="5dp"
                 android:layout_weight="1"
-                android:background="@drawable/statelarg"
+                android:background="@drawable/background_selected_t"
                 android:onClick="LVA"
                 android:text="@string/all"
                 android:textColor="@color/mdtp_white"

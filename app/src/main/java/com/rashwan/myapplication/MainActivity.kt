@@ -11,9 +11,9 @@ import android.widget.AdapterView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.add_case.view.*
 import kotlinx.android.synthetic.main.add_case.view.et10caseModifiedDate
 import kotlinx.android.synthetic.main.add_case.view.et1caseNum
 import kotlinx.android.synthetic.main.add_case.view.et2caseYear
@@ -34,6 +34,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 
+@Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity() {
     var mRef: DatabaseReference? = null
     var mNotelist: ArrayList<Casesinfo>? = null
@@ -44,10 +45,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
         setContentView(R.layout.activity_main)
+        LVA(allbtn)
         var database: FirebaseDatabase = FirebaseDatabase.getInstance()
         mRef = database.getReference("Cases")
         mNotelist = ArrayList()
-        addfltbtn.setOnClickListener { showdialogeAddnote() }
+        addfltbtn.setOnClickListener {
+            showdialogeAddnote()
+
+        }
 
         new_list_view.onItemLongClickListener =
             AdapterView.OnItemLongClickListener { p0, p1, p2, p3 ->
@@ -63,8 +68,6 @@ class MainActivity : AppCompatActivity() {
                 } else {
                     update_case_view.delbtn.text = "حذف"
                 }
-
-
 
 
                 val alertDialog = alertBuilder.create()
@@ -163,6 +166,8 @@ class MainActivity : AppCompatActivity() {
                 case.casePapers
                 case.caseNotes
                 case.caseSessionDate
+                case.Id
+                case.IsCaseDeleted
                 var caseIntent = Intent(this, caseDetail::class.java)
                 caseIntent.putExtra("caseNum", case.caseNum)
                 caseIntent.putExtra("caseYear", case.caseYear)
@@ -174,16 +179,22 @@ class MainActivity : AppCompatActivity() {
                 caseIntent.putExtra("caseNotes", case.caseNotes)
                 caseIntent.putExtra("caseSessionDate", case.caseSessionDate)
                 caseIntent.putExtra("caseModifiedDate", case.caseModifiedDate)
+                caseIntent.putExtra("Id", case.Id)
+                caseIntent.putExtra("isCaseDeleted", case.IsCaseDeleted)
+
+
                 startActivity(caseIntent)
+
+
             }
 
-        var sortedList =
-            mNotelist?.sortedWith(compareBy({ it.caseSessionDate }))?.toList()
+    }
 
-        val noteadapter = NotesAdapter(application, sortedList!!)
 
-//        RV.adapter= SimpleAdapter()
-}
+    var sortedList =
+        mNotelist?.sortedWith(compareBy({ it.caseSessionDate }))?.toList()
+
+//        val noteadapter = NotesAdapter(application, sortedList!!)
 
 
     fun LVA(view: View) {
@@ -362,13 +373,18 @@ class MainActivity : AppCompatActivity() {
 
     fun showdialogeAddnote() {
         val alertbuilder = AlertDialog.Builder(this)
-        val view = layoutInflater.inflate(R.layout.add_case, null)
+
+        val view = layoutInflater.inflate(R.layout.edit_case, null)
+        view.delbtn.isVisible = false
+        view.updbtn.text = "اضافة"
+        view.et1caseNumT.text = "اضافة قضية جديدة"
+
 
         alertbuilder.setView(view)
         val alertDialoge = alertbuilder.create()
         alertDialoge.show()
-        val view1 = (R.layout.add_case)
-        // R.layout.add_case.
+
+
 
 
         view.et7caseSessionDate.setOnClickListener {
@@ -377,7 +393,7 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        view.addbtn.setOnClickListener {
+        view.updbtn.setOnClickListener {
 
             if (view.et1caseNum.text.toString().isNotEmpty() && view.et2caseYear.text.toString().isNotEmpty() && view.et7caseSessionDate.text.toString().isNotEmpty()) {
 
@@ -400,13 +416,15 @@ class MainActivity : AppCompatActivity() {
                     0
                 )
                 mRef!!.child(id).setValue(myCase)
-            var testfun = tools.strToEpoch("2010-05-01").toString()
+                var testfun = tools.strToEpoch("2010-05-01").toString()
                 //  Toast.makeText(this, testfun, Toast.LENGTH_LONG).show()
                 var sortedList = mNotelist?.sortedWith(compareBy({ it.caseSessionDate }))?.toList()
                 val noteadapter = NotesAdapter(application, sortedList!!)
                 new_list_view.adapter=noteadapter
 
-                //   Toast.makeText(this, "تم اضافة الجلسة بنجاح", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "تم اضافة الجلسة بنجاح", Toast.LENGTH_LONG).show()
+                LVA(allbtn)
+
 
                 alertDialoge.dismiss()
             } else {
@@ -417,66 +435,59 @@ class MainActivity : AppCompatActivity() {
                 ).show()
             }
         }
+        view.cancelbtn.setOnClickListener {
+            alertDialoge.hide()
+
+        }
 
 
     }
 
-    fun pickDateValidation(textview: TextView) {
-
-
+    fun pickDateValidation(textview: TextView): Long {
         val c = Calendar.getInstance()
         val year = c.get(Calendar.YEAR)
         var month = c.get(Calendar.MONTH)
-        val day = c.get(Calendar.DAY_OF_MONTH)
+        var day = c.get(Calendar.DAY_OF_MONTH)
+        var pure = year.toString() + month.toString() + day.toString()
+        var result: Long = 0
+
+        val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { _, _, _, dayOfMonth ->
+            val myCalendar = GregorianCalendar(year, month, dayOfMonth)
+            var dayOfWeek = myCalendar.get(Calendar.DAY_OF_WEEK)
+            var mydateformated =
+                (SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(myCalendar.time))
+
+            var timecaptured = myCalendar.time
+
+            if (dayOfWeek > 5) {
+
+                Toast.makeText(
+                    this,
+                    "لا يمكن اختيار يوم عطلة ، يرجى التأكد من التاريخ والمحاولة ثانية!",
+                    Toast.LENGTH_SHORT
+                ).show()
+
+            } else {
+                //  textview.text = mydateformated
+
+                var a = myCalendar.timeInMillis.toString()
+                var b = a.substring(0, 10).toLong()
+                result = b
+                // day=result
+                textview.text = tools.epochToStr(b)
 
 
-        val dpd = DatePickerDialog(
-            this,
-            DatePickerDialog.OnDateSetListener { view1, year, month, dayOfMonth ->
-                val myCalendar = GregorianCalendar(year, month, dayOfMonth)
-                var dayOfWeek = myCalendar.get(Calendar.DAY_OF_WEEK)
-                var daylong =
-                    (SimpleDateFormat("EEEE", Locale.getDefault()).format(myCalendar.time))
-                var mydateformated = (SimpleDateFormat(
-                    "yyyy-MM-dd",
-                    Locale.getDefault()
-                ).format(myCalendar.time))
-                val timenowformated =
-                    LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
-
-                if (dayOfWeek > 5) {
-
-                    Toast.makeText(
-                        this,
-                        "لا يمكن اختيار يوم عطلة ، يرجى التأكد من التاريخ والمحاولة ثانية!",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                } else {
-                    //   var et7: TextView=et7caseSessionDate
-
-                    textview.text = mydateformated
-
-                }
+            }
 
 
-            },
-            year,
-            month,
-            day
-        )
-
-
-
+        }, year, month, day)
 
 
         dpd.datePicker.firstDayOfWeek = Calendar.SUNDAY
         dpd.datePicker.minDate = (c.timeInMillis)
-        c.add(Calendar.YEAR, 1)
-        dpd.datePicker.maxDate = (c.timeInMillis)
-
         dpd.show()
-        return
+        textview.text = result.toString()
+        return result
     }
-
 }
 

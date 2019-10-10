@@ -2,9 +2,26 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/rowstyle"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/bkgrnd"
         android:orientation="vertical">
 
+
+        <TextView
+
+                android:id="@+id/et1caseNumT2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="1dp"
+                android:background="@drawable/statelarg"
+                android:backgroundTint="@color/myblackLight"
+                android:padding="10dp"
+                android:text="@string/caseNum"
+                android:textAlignment="center"
+                android:textColor="#E7ECE9"
+                android:textSize="22sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -19,8 +36,8 @@
                     android:id="@+id/caseCountYear"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/state_fron_btn"
-android:layout_weight="1"
+                    android:layout_weight="1"
+                    android:background="@drawable/background_rowstyle"
                     android:text="@string/caseCountYear"
                     android:textAlignment="center"
                     android:textColor="#311B92"
@@ -33,7 +50,7 @@ android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
 
-                    android:background="@drawable/state_fron_btn"
+                    android:background="@drawable/background_rowstyle"
                     android:backgroundTint="#5733691E"
                     android:text="@string/caseCount"
                     android:textAlignment="center"
@@ -44,10 +61,10 @@ android:layout_weight="1"
                     android:id="@+id/caseYear"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/state_fron_btn"
+                    android:layout_weight="1"
+                    android:background="@drawable/background_rowstyle"
                     android:baselineAligned="false"
                     android:text="@string/caseYear"
-                    android:layout_weight="1"
 
                     android:textAlignment="center"
                     android:textColor="#311B92"
@@ -59,7 +76,7 @@ android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
 
-                    android:background="@drawable/state_fron_btn"
+                    android:background="@drawable/background_rowstyle"
                     android:backgroundTint="#5733691E"
                     android:text="@string/caseNum"
                     android:textAlignment="center"
@@ -67,15 +84,16 @@ android:layout_weight="1"
                     android:textSize="24sp" />
 
         </LinearLayout>
+
     <LinearLayout
+            android:id="@+id/casedetailslayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-android:gravity="center"
-            android:weightSum="4"
             android:layout_marginBottom="5dp"
+            android:gravity="center"
 
-            android:background="@color/mdtp_white"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="4">
 
 
         <TextView
@@ -83,11 +101,11 @@ android:gravity="center"
                 android:id="@+id/caseCountYearV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-android:layout_weight="1"
-                android:background="@drawable/state_fron_btn"
+                android:layout_weight="1"
+                android:background="@drawable/background_rowstyle"
                 android:text="@string/caseCountYear"
                 android:textAlignment="center"
-                android:textColor="#311B92"
+                android:textColor="#FFFCFC"
                 android:textSize="24sp" />
 
         <TextView
@@ -97,24 +115,24 @@ android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
 
-                android:background="@drawable/state_fron_btn"
+                android:background="@drawable/background_rowstyle"
                 android:backgroundTint="#5733691E"
                 android:text="@string/caseCount"
                 android:textAlignment="center"
-                android:textColor="#311B92"
+                android:textColor="#FFFCFC"
                 android:textSize="24sp" />
 
         <TextView
-                android:layout_weight="1"
-
                 android:id="@+id/caseYearV"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/state_fron_btn"
+                android:layout_weight="1"
+                android:background="@drawable/background_rowstyle"
                 android:baselineAligned="false"
                 android:text="@string/caseYear"
                 android:textAlignment="center"
-                android:textColor="#311B92"
+                android:textColor="#FFFCFC"
                 android:textSize="24sp" />
 
         <TextView
@@ -124,11 +142,11 @@ android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
 
-                android:background="@drawable/state_fron_btn"
+                android:background="@drawable/background_rowstyle"
                 android:backgroundTint="#5733691E"
                 android:text="@string/caseNum"
                 android:textAlignment="center"
-                android:textColor="#311B92"
+                android:textColor="#FFFCFC"
                 android:textSize="24sp" />
 
     </LinearLayout>
@@ -142,11 +160,12 @@ android:layout_weight="1"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="5dp"
-            android:background="@drawable/state_fron_btn"
+            android:background="@drawable/background_rowstyle"
 
             android:backgroundTint="#4601579B"
             android:paddingHorizontal="@dimen/default_gap"
             android:text="@string/caseAccuser"
+            android:textColor="#FFFFFF"
             android:textSize="24sp" />
 
     <TextView
@@ -156,10 +175,11 @@ android:layout_weight="1"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="5dp"
-            android:background="@drawable/state_fron_btn"
+            android:background="@drawable/background_rowstyle"
             android:paddingHorizontal="@dimen/default_gap"
 
             android:text="@string/caseCreater"
+            android:textColor="#FFFFFF"
             android:textSize="24sp" />
 
     <TextView
@@ -169,11 +189,12 @@ android:layout_weight="1"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="5dp"
-            android:background="@drawable/state_fron_btn"
+            android:background="@drawable/background_rowstyle"
             android:backgroundTint="#4601579B"
 
             android:paddingHorizontal="@dimen/default_gap"
             android:text="@string/caseSessionDate"
+            android:textColor="#FFFFFF"
             android:textSize="24sp" />
 
     <TextView
@@ -184,9 +205,10 @@ android:layout_weight="1"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="5dp"
 
-            android:background="@drawable/state_fron_btn"
+            android:background="@drawable/background_rowstyle"
             android:paddingHorizontal="@dimen/default_gap"
             android:text="@string/casePapers"
+            android:textColor="#FFFFFF"
             android:textSize="24sp" />
 
     <TextView
@@ -196,20 +218,33 @@ android:layout_weight="1"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="5dp"
-            android:background="@drawable/state_fron_btn"
+            android:background="@drawable/background_rowstyle"
             android:backgroundTint="#4601579B"
 
             android:paddingHorizontal="@dimen/default_gap"
             android:singleLine="false"
             android:text="@string/caseModifiedDate"
+            android:textColor="#FFFFFF"
             android:textSize="20sp" />
 
 
-    <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="448dp"
+        <Button
+                android:id="@+id/inneredit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/background_edit"
+                android:text="@string/manage"
+                android:textColor="@color/mywhite"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
-            android:paddingHorizontal="@dimen/default_gap">
+        <ScrollView
+            android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/background_rowstyle"
+                android:paddingHorizontal="@dimen/default_gap"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp">
 
         <TextView
                 android:id="@+id/caseNotes"
@@ -217,9 +252,11 @@ android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
-                android:background="@drawable/state_fron_btn"
                 android:paddingHorizontal="@dimen/default_gap"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
                 android:text="@string/caseNotes"
+                android:textColor="#FFFFFF"
                 android:textSize="24sp" />
 
     </ScrollView>
