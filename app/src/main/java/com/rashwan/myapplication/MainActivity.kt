@@ -49,7 +49,6 @@ class MainActivity : AppCompatActivity() {
         mNotelist = ArrayList()
         addfltbtn.setOnClickListener { showdialogeAddnote() }
 
-
         new_list_view.onItemLongClickListener =
             AdapterView.OnItemLongClickListener { p0, p1, p2, p3 ->
                 var sortedList = mNotelist?.sortedWith(compareBy({ it.caseSessionDate }))?.toList()

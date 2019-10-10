@@ -30,11 +30,11 @@
 
             <stroke android:width="5dp"
 
-                    android:color="@color/mygreen">
+                    android:color="@color/myred">
 
             </stroke>
             <!--    <solid android:color="@color/myred" /> -->
-            <gradient android:endColor="@color/rowstyle2" android:startColor="@color/rowstyle1" />
+            <gradient android:endColor="@color/rowstyle2_del" android:startColor="@color/rowstyle1_del" />
 
 
             <corners android:radius="20dp">
