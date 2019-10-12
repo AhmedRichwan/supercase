@@ -63,7 +63,7 @@ class MainActivity : AppCompatActivity() {
                 var update_case_view = layoutInflater.inflate(R.layout.edit_case, null)
 
 //                var update_case_view = layoutInflater.inflate(R.layout.update_case, null)
-                if (casy.IsCaseDeleted == 1) {
+                if (casy.IsDeleted == 1) {
                     update_case_view.delbtn.text = "استرجاع"
                 } else {
                     update_case_view.delbtn.text = "حذف"
@@ -131,7 +131,7 @@ class MainActivity : AppCompatActivity() {
                         update_case_view.et8casePapers.text.toString(),
                         update_case_view.et9caseNotes.text.toString(),
                         (LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd EEEE HH-mm"))),
-                        if (casy.IsCaseDeleted == 1) {
+                        if (casy.IsDeleted == 1) {
                             0
                         } else {
                             1
@@ -167,7 +167,7 @@ class MainActivity : AppCompatActivity() {
                 case.caseNotes
                 case.caseSessionDate
                 case.Id
-                case.IsCaseDeleted
+                case.IsDeleted
                 var caseIntent = Intent(this, caseDetail::class.java)
                 caseIntent.putExtra("caseNum", case.caseNum)
                 caseIntent.putExtra("caseYear", case.caseYear)
@@ -180,7 +180,7 @@ class MainActivity : AppCompatActivity() {
                 caseIntent.putExtra("caseSessionDate", case.caseSessionDate)
                 caseIntent.putExtra("caseModifiedDate", case.caseModifiedDate)
                 caseIntent.putExtra("Id", case.Id)
-                caseIntent.putExtra("isCaseDeleted", case.IsCaseDeleted)
+                caseIntent.putExtra("IsDeleted", case.IsDeleted)
 
 
                 startActivity(caseIntent)
@@ -209,7 +209,7 @@ class MainActivity : AppCompatActivity() {
 
                     for (n in p0.children) {
                         val case = n.getValue(Casesinfo::class.java)
-                        var checkDeleted = n.child("isCaseDeleted").value
+                        var checkDeleted = n.child("IsDeleted").value
                         var caseSessionDate = n.child("caseSessionDate").value.toString().toLong()
 
                         val today = LocalDate.now()
@@ -251,7 +251,7 @@ class MainActivity : AppCompatActivity() {
 
                     for (n in p0.children) {
                         val case = n.getValue(Casesinfo::class.java)
-                        var checkDeleted = n.child("isCaseDeleted").value
+                        var checkDeleted = n.child("IsDeleted").value
                         var caseSessionDate = n.child("caseSessionDate").value.toString().toLong()
                         val today = LocalDate.now()
                         // Go backward to get Monday
@@ -292,7 +292,7 @@ class MainActivity : AppCompatActivity() {
 
                     for (n in p0.children) {
                         val case = n.getValue(Casesinfo::class.java)
-                        var checkDeleted = n.child("isCaseDeleted").value
+                        var checkDeleted = n.child("IsDeleted").value
                         var caseSessionDate = n.child("caseSessionDate").value.toString().toLong()
                         val today = LocalDate.now()
                         // Go backward to get Monday
@@ -337,7 +337,7 @@ class MainActivity : AppCompatActivity() {
 
                     for (n in p0.children) {
                         val case = n.getValue(Casesinfo::class.java)
-                        var checkDeleted = n.child("isCaseDeleted").value
+                        var checkDeleted = n.child("IsDeleted").value
                         var caseSessionDate = n.child("caseSessionDate").value.toString().toLong()
                         val today = LocalDate.now()
                         // Go backward to get Monday
@@ -369,7 +369,7 @@ class MainActivity : AppCompatActivity() {
 
             })
         }
-}
+    }
 
     fun showdialogeAddnote() {
         val alertbuilder = AlertDialog.Builder(this)

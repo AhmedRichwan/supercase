@@ -32,7 +32,7 @@ class caseDetail : AppCompatActivity() {
         caseCreater.text = intent.extras!!.getString("caseCreater")
         caseAccuser.text = intent.extras!!.getString("caseAccuser")
         casePapers.text = intent.extras!!.getString("casePapers")
-        caseNotes.text = intent.extras!!.getString("isCaseDeleted")
+        caseNotes.text = intent.extras!!.getString("IsDeleted")
         caseSessionDate.text =
             tools.epochToStr(intent.extras!!.getString("caseSessionDate")!!.toLong())
         caseModifiedDate.text = intent.extras!!.getString("caseModifiedDate")
@@ -42,7 +42,7 @@ class caseDetail : AppCompatActivity() {
         caseCountV.text = intent.extras!!.getString("caseCount")
         caseCountYearV.text = intent.extras!!.getString("caseCountYear")
         var idval = intent.extras!!.getString("Id")
-        var deletion = intent.extras!!.getString("isCaseDeleted")
+        var deletion = intent.extras!!.getString("IsDeleted")
 
         inneredit.setOnClickListener {
             var sortedList = mNotelist?.sortedWith(compareBy({ it.caseSessionDate }))?.toList()
