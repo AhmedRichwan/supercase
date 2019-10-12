@@ -25,6 +25,8 @@ class caseDetail : AppCompatActivity() {
         supportActionBar?.hide()
         setContentView(R.layout.case_detail)
         mRef = database.getReference("Cases")
+        var idval = intent.extras!!.getString("Id")
+        var deletion = intent.extras!!.getString("deleted")!!.toInt()
         caseNum.text = "رقم القضية"
         caseYear.text = "عام القضية"
         caseCount.text = "رقم الحصر"
@@ -32,17 +34,42 @@ class caseDetail : AppCompatActivity() {
         caseCreater.text = intent.extras!!.getString("caseCreater")
         caseAccuser.text = intent.extras!!.getString("caseAccuser")
         casePapers.text = intent.extras!!.getString("casePapers")
-        caseNotes.text = intent.extras!!.getString("IsDeleted")
+        caseNotes.text = intent.extras!!.getString("deleted")
         caseSessionDate.text =
             tools.epochToStr(intent.extras!!.getString("caseSessionDate")!!.toLong())
         caseModifiedDate.text = intent.extras!!.getString("caseModifiedDate")
         caseNumV.text = intent.extras!!.getString("caseNum")
-        et1caseNumT2.text = "التفاصيل الكاملة للقضية رقم  " + intent.extras!!.getString("caseNum")
+        if (deletion.toInt() == 1) {
+
+            et1caseNumT2.text =
+                "التفاصيل الكاملة للقضية المحذوفة رقم  " + intent.extras!!.getString("caseNum")
+
+            et1caseNumT2.setBackgroundResource(R.drawable.background_delete)
+            inneredit.setBackgroundResource(R.drawable.background_delete)
+        } else {
+            et1caseNumT2.text =
+                "التفاصيل الكاملة للقضية رقم  " + intent.extras!!.getString("caseNum")
+            et1caseNumT2.setBackgroundResource(R.drawable.background_title)
+            inneredit.setBackgroundResource(R.drawable.background_edit)
+
+        }
         caseYearV.text = intent.extras!!.getString("caseYear")
         caseCountV.text = intent.extras!!.getString("caseCount")
         caseCountYearV.text = intent.extras!!.getString("caseCountYear")
-        var idval = intent.extras!!.getString("Id")
-        var deletion = intent.extras!!.getString("IsDeleted")
+
+
+
+
+
+        if (deletion.toInt() == 1) {
+
+
+            et1caseNumT2.setBackgroundResource(R.drawable.background_delete)
+        }
+
+
+
+
 
         inneredit.setOnClickListener {
             var sortedList = mNotelist?.sortedWith(compareBy({ it.caseSessionDate }))?.toList()
@@ -51,10 +78,7 @@ class caseDetail : AppCompatActivity() {
             val alertBuilder = AlertDialog.Builder(this)
             var update_case_view = layoutInflater.inflate(R.layout.edit_case, null)
 
-            if (deletion?.toInt() == 1) {
-                et1caseNumT2.text =
-                    "تفاصيل القضية المحذوفة   رقم  " + update_case_view.et1caseNum.text.toString()
-                et1caseNumT2.setBackgroundResource(R.drawable.background_delete)
+            if (deletion == 1) {
                 update_case_view.delbtn.text = "استرجاع"
             } else {
                 update_case_view.delbtn.text = "حذف"
@@ -64,6 +88,7 @@ class caseDetail : AppCompatActivity() {
             val alertDialog = alertBuilder.create()
 
             alertDialog.setView(update_case_view)
+
             alertDialog.show()
 
             update_case_view.et1caseNumT.text = " تعديل بيانات القضية رقم :   " + caseNumV.text
@@ -105,10 +130,10 @@ class caseDetail : AppCompatActivity() {
 
                 Toast.makeText(this, "تم التعديل", Toast.LENGTH_LONG).show()
 
-                caseNum.text = update_case_view.et1caseNum.text.toString()
-                caseYear.text = update_case_view.et2caseYear.text.toString()
-                caseCount.text = update_case_view.et3caseCount.text.toString()
-                caseCountYear.text = update_case_view.et4caseCountYear.text.toString()
+                caseNumV.text = update_case_view.et1caseNum.text.toString()
+                caseYearV.text = update_case_view.et2caseYear.text.toString()
+                caseCountV.text = update_case_view.et3caseCount.text.toString()
+                caseCountYearV.text = update_case_view.et4caseCountYear.text.toString()
                 caseAccuser.text = update_case_view.et5caseAccuser.text.toString()
                 caseCreater.text = update_case_view.et6caseCreater.text.toString()
                 caseSessionDate.text = update_case_view.et7caseSessionDate.text.toString()
@@ -117,7 +142,14 @@ class caseDetail : AppCompatActivity() {
                 caseModifiedDate.text = update_case_view.et10caseModifiedDate.text.toString()
                 et1caseNumT2.text =
                     "التفاصيل الكاملة للقضية رقم  " + update_case_view.et1caseNum.text.toString()
-                et1caseNumT2.setBackgroundResource(R.color.myblackLight)
+                et1caseNumT2.setBackgroundResource(R.drawable.background_title)
+
+
+
+                et1caseNumT2.text =
+                    "التفاصيل الكاملة للقضية رقم  " + intent.extras!!.getString("caseNum")
+                et1caseNumT2.setBackgroundResource(R.drawable.background_title)
+                inneredit.setBackgroundResource(R.drawable.background_edit)
 
 
 
@@ -140,29 +172,48 @@ class caseDetail : AppCompatActivity() {
                     update_case_view.et8casePapers.text.toString(),
                     update_case_view.et9caseNotes.text.toString(),
                     (LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd EEEE HH-mm"))),
-                    if (deletion?.toInt() == 1) {
+                    if (deletion.toInt() == 1) {
                         0
                     } else {
                         1
                     }
                 )
                 childRef!!.setValue(afterUpdate)
-                //  if (view2.ite) {
-                Toast.makeText(this, "تم الحذف", Toast.LENGTH_LONG).show()
+                var result = ""
+                if (deletion == 1) {
+                    result = "تم الاسترجاع"
+                } else {
+                    result = "تم الحذف"
+                }
 
-                caseNum.text = update_case_view.et1caseNum.text.toString()
-                caseYear.text = update_case_view.et2caseYear.text.toString()
-                caseCount.text = update_case_view.et3caseCount.text.toString()
-                caseCountYear.text = update_case_view.et4caseCountYear.text.toString()
+                Toast.makeText(this, result, Toast.LENGTH_LONG).show()
+
+                caseNumV.text = update_case_view.et1caseNum.text.toString()
+                caseYearV.text = update_case_view.et2caseYear.text.toString()
+                caseCountV.text = update_case_view.et3caseCount.text.toString()
+                caseCountYearV.text = update_case_view.et4caseCountYear.text.toString()
+
                 caseAccuser.text = update_case_view.et5caseAccuser.text.toString()
                 caseCreater.text = update_case_view.et6caseCreater.text.toString()
                 caseSessionDate.text = update_case_view.et7caseSessionDate.text.toString()
                 casePapers.text = update_case_view.et8casePapers.text.toString()
                 caseNotes.text = update_case_view.et9caseNotes.text.toString()
                 caseModifiedDate.text = update_case_view.et10caseModifiedDate.text.toString()
+
+
+
                 et1caseNumT2.text =
-                    "تفاصيل القضية المحذوفة   رقم  " + update_case_view.et1caseNum.text.toString()
+                    "التفاصيل الكاملة للقضية المحذوفة رقم  " + intent.extras!!.getString("caseNum")
+
                 et1caseNumT2.setBackgroundResource(R.drawable.background_delete)
+                inneredit.setBackgroundResource(R.drawable.background_delete)
+
+                caseYearV.text = intent.extras!!.getString("caseYear")
+                caseCountV.text = intent.extras!!.getString("caseCount")
+                caseCountYearV.text = intent.extras!!.getString("caseCountYear")
+
+
+
 
                 alertDialog.dismiss()
 
@@ -225,3 +276,5 @@ class caseDetail : AppCompatActivity() {
     }
 
 }
+
+

@@ -63,7 +63,7 @@ class MainActivity : AppCompatActivity() {
                 var update_case_view = layoutInflater.inflate(R.layout.edit_case, null)
 
 //                var update_case_view = layoutInflater.inflate(R.layout.update_case, null)
-                if (casy.IsDeleted == 1) {
+                if (casy.deleted == 1) {
                     update_case_view.delbtn.text = "استرجاع"
                 } else {
                     update_case_view.delbtn.text = "حذف"
@@ -131,7 +131,7 @@ class MainActivity : AppCompatActivity() {
                         update_case_view.et8casePapers.text.toString(),
                         update_case_view.et9caseNotes.text.toString(),
                         (LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd EEEE HH-mm"))),
-                        if (casy.IsDeleted == 1) {
+                        if (casy.deleted == 1) {
                             0
                         } else {
                             1
@@ -157,6 +157,9 @@ class MainActivity : AppCompatActivity() {
 
                 var sortedList = mNotelist?.sortedWith(compareBy({ it.caseSessionDate }))?.toList()
                 var case = sortedList?.get(position)!!
+
+
+
                 case.caseNum
                 case.caseYear
                 case.caseCount
@@ -167,7 +170,8 @@ class MainActivity : AppCompatActivity() {
                 case.caseNotes
                 case.caseSessionDate
                 case.Id
-                case.IsDeleted
+                var test = case.deleted.toString()
+
                 var caseIntent = Intent(this, caseDetail::class.java)
                 caseIntent.putExtra("caseNum", case.caseNum)
                 caseIntent.putExtra("caseYear", case.caseYear)
@@ -180,7 +184,7 @@ class MainActivity : AppCompatActivity() {
                 caseIntent.putExtra("caseSessionDate", case.caseSessionDate)
                 caseIntent.putExtra("caseModifiedDate", case.caseModifiedDate)
                 caseIntent.putExtra("Id", case.Id)
-                caseIntent.putExtra("IsDeleted", case.IsDeleted)
+                caseIntent.putExtra("deleted", case.deleted.toString())
 
 
                 startActivity(caseIntent)
@@ -209,7 +213,7 @@ class MainActivity : AppCompatActivity() {
 
                     for (n in p0.children) {
                         val case = n.getValue(Casesinfo::class.java)
-                        var checkDeleted = n.child("IsDeleted").value
+                        var checkDeleted = n.child("deleted").value
                         var caseSessionDate = n.child("caseSessionDate").value.toString().toLong()
 
                         val today = LocalDate.now()
@@ -251,7 +255,7 @@ class MainActivity : AppCompatActivity() {
 
                     for (n in p0.children) {
                         val case = n.getValue(Casesinfo::class.java)
-                        var checkDeleted = n.child("IsDeleted").value
+                        var checkDeleted = n.child("deleted").value
                         var caseSessionDate = n.child("caseSessionDate").value.toString().toLong()
                         val today = LocalDate.now()
                         // Go backward to get Monday
@@ -292,7 +296,7 @@ class MainActivity : AppCompatActivity() {
 
                     for (n in p0.children) {
                         val case = n.getValue(Casesinfo::class.java)
-                        var checkDeleted = n.child("IsDeleted").value
+                        var checkDeleted = n.child("deleted").value
                         var caseSessionDate = n.child("caseSessionDate").value.toString().toLong()
                         val today = LocalDate.now()
                         // Go backward to get Monday
@@ -337,7 +341,7 @@ class MainActivity : AppCompatActivity() {
 
                     for (n in p0.children) {
                         val case = n.getValue(Casesinfo::class.java)
-                        var checkDeleted = n.child("IsDeleted").value
+                        var checkDeleted = n.child("deleted").value
                         var caseSessionDate = n.child("caseSessionDate").value.toString().toLong()
                         val today = LocalDate.now()
                         // Go backward to get Monday

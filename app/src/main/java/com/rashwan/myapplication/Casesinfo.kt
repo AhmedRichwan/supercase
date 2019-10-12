@@ -13,7 +13,7 @@ class Casesinfo {
      var casePapers: String? = null
      var caseNotes: String? = null
      var caseModifiedDate: String? = null
-    var IsDeleted: Int? = null
+    var deleted: Int? = null
 
 
     constructor()
@@ -22,7 +22,7 @@ class Casesinfo {
     constructor(
         Id: String, caseNum: String, caseYear: String, caseCount: String, caseCountYear: String,
         caseAccuser: String, caseCreater: String, caseSessionDate: String,
-        casePapers: String, caseNotes: String, caseModifiedDate: String, IsDeleted: Int
+        casePapers: String, caseNotes: String, caseModifiedDate: String, deleted: Int
      ) {
          this.Id = Id
          this.caseNum = caseNum
@@ -35,7 +35,7 @@ class Casesinfo {
          this.casePapers = casePapers
          this.caseNotes = caseNotes
          this.caseModifiedDate = caseModifiedDate
-        this.IsDeleted = IsDeleted
+        this.deleted = deleted
 
      }
 
