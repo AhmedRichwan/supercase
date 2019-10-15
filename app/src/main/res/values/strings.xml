@@ -35,6 +35,7 @@
     <string name="cancel">الغاء</string>
     <string name="delete">حذف</string>
     <string name="manage">ادارة</string>
+    <string name="test">اختبر</string>
 
 
 </resources>

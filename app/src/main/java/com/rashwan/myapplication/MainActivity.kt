@@ -4,6 +4,7 @@ package com.rashwan.myapplication
 import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.app.DatePickerDialog
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -13,6 +14,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.google.firebase.database.*
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.add_case.view.et10caseModifiedDate
 import kotlinx.android.synthetic.main.add_case.view.et1caseNum
@@ -25,6 +27,7 @@ import kotlinx.android.synthetic.main.add_case.view.et7caseSessionDate
 import kotlinx.android.synthetic.main.add_case.view.et8casePapers
 import kotlinx.android.synthetic.main.add_case.view.et9caseNotes
 import kotlinx.android.synthetic.main.edit_case.view.*
+import java.io.File
 import java.text.SimpleDateFormat
 import java.time.DayOfWeek
 import java.time.LocalDate
@@ -45,7 +48,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
         setContentView(R.layout.activity_main)
-        LVA(allbtn)
+        testbtn.setOnClickListener {
+            //            var testintent = Intent(this, test::class.java)
+//            startActivity(testintent)
+            //   autoadd()
+
+        }
         var database: FirebaseDatabase = FirebaseDatabase.getInstance()
         mRef = database.getReference("Cases")
         mNotelist = ArrayList()
@@ -411,7 +419,7 @@ class MainActivity : AppCompatActivity() {
                     view.et4caseCountYear.text.toString(),
                     view.et5caseAccuser.text.toString(),
                     view.et6caseCreater.text.toString(),
-                    tools.strToEpoch(view.et7caseSessionDate.text.toString()).toString() ,
+                    tools.strToEpoch(view.et7caseSessionDate.text.toString()).toString(),
                     view.et8casePapers.text.toString(),
                     view.et9caseNotes.text.toString(),
                     view.et10caseModifiedDate.text.toString() + (LocalDateTime.now().format(
@@ -424,7 +432,7 @@ class MainActivity : AppCompatActivity() {
                 //  Toast.makeText(this, testfun, Toast.LENGTH_LONG).show()
                 var sortedList = mNotelist?.sortedWith(compareBy({ it.caseSessionDate }))?.toList()
                 val noteadapter = NotesAdapter(application, sortedList!!)
-                new_list_view.adapter=noteadapter
+                new_list_view.adapter = noteadapter
 
                 Toast.makeText(this, "تم اضافة الجلسة بنجاح", Toast.LENGTH_LONG).show()
                 LVA(allbtn)
@@ -448,6 +456,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun pickDateValidation(textview: TextView): Long {
+        var orginalvalue = textview.text
         val c = Calendar.getInstance()
         val year = c.get(Calendar.YEAR)
         var month = c.get(Calendar.MONTH)
@@ -490,8 +499,32 @@ class MainActivity : AppCompatActivity() {
         dpd.datePicker.firstDayOfWeek = Calendar.SUNDAY
         dpd.datePicker.minDate = (c.timeInMillis)
         dpd.show()
-        textview.text = result.toString()
+        textview.text = orginalvalue
+
         return result
     }
-}
 
+    fun save() {
+        var gson = Gson()
+        val filename = "name"
+        val file = application?.getFileStreamPath(filename)
+        if (file == null || !file.exists()) {
+            val array = ArrayList<Casesinfo>()
+
+            var json: String = gson.toJson(array).replace("\\n", "\n")
+            application?.openFileOutput(filename, Context.MODE_PRIVATE).use {
+                it?.write(json.toByteArray())
+            }
+        } else {
+            val file1 = File(application?.filesDir, filename)
+            val contents = file1.readText()
+            val array = gson.fromJson(contents, Array<Casesinfo>::class.java)
+            val arrayList = ArrayList(array.toMutableList())
+            val json: String = gson.toJson(arrayList).replace("\\n", "\n")
+            application?.openFileOutput(filename, Context.MODE_PRIVATE).use {
+                it?.write(json.toByteArray())
+            }
+        }
+    }
+
+}

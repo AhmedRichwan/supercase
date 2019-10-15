@@ -18,6 +18,7 @@ class tools {
                 .format(DateTimeFormatter.ofPattern("yyyy-MM-dd EEEE"))
         }
 
+
         fun epochToStrWithoutEEE(e: Long): String {
 
             return LocalDateTime.ofInstant(Instant.ofEpochSecond(e), ZoneId.systemDefault())

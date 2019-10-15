@@ -229,6 +229,7 @@ class caseDetail : AppCompatActivity() {
 
 
     fun pickDateValidation(textview: TextView): Long {
+        var orginalvalue = textview.text
         val c = Calendar.getInstance()
         val year = c.get(Calendar.YEAR)
         var month = c.get(Calendar.MONTH)
@@ -271,10 +272,10 @@ class caseDetail : AppCompatActivity() {
         dpd.datePicker.firstDayOfWeek = Calendar.SUNDAY
         dpd.datePicker.minDate = (c.timeInMillis)
         dpd.show()
-        textview.text = result.toString()
+        textview.text = orginalvalue
+
         return result
     }
-
 }
 
 
