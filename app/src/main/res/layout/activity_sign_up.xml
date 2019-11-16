@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bkgrnd"
+
+        android:orientation="vertical"
+        tools:context=".SignUp">
+
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:orientation="vertical">
+
+        <EditText
+                android:id="@+id/signupemail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="36dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/background_rowstyle"
+                android:hint="enter your email"
+                android:inputType="textEmailAddress"
+                android:padding="15dp"
+                android:textColor="@color/mywhite"
+                android:textColorHint="@color/myYellow"
+                android:textSize="20sp" />
+
+        <EditText
+                android:id="@+id/signuppass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/background_rowstyle"
+                android:ems="10"
+                android:hint="Enter new password"
+                android:inputType="numberPassword"
+                android:padding="15dp"
+                android:textColorHint="@color/myYellow"
+                android:textSize="20sp" />
+
+        <Button
+                android:id="@+id/btnreg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="50dp"
+                android:layout_marginBottom="356dp"
+                android:background="@drawable/background_edit"
+
+                android:text="Register"
+                android:textAllCaps="false"
+                android:textColor="@color/mywhite"
+                android:textSize="30sp" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

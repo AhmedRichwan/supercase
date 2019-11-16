@@ -34,7 +34,7 @@ class caseDetail : AppCompatActivity() {
         caseCreater.text = intent.extras!!.getString("caseCreater")
         caseAccuser.text = intent.extras!!.getString("caseAccuser")
         casePapers.text = intent.extras!!.getString("casePapers")
-        caseNotes.text = intent.extras!!.getString("deleted")
+        caseNotes.text = intent.extras!!.getString("caseNotes")
         caseSessionDate.text =
             tools.epochToStr(intent.extras!!.getString("caseSessionDate")!!.toLong())
         caseModifiedDate.text = intent.extras!!.getString("caseModifiedDate")
@@ -109,9 +109,9 @@ class caseDetail : AppCompatActivity() {
 
             update_case_view.updbtn.setOnClickListener {
 
-                var childRef = mRef?.child(idval!!)
+                val childRef = mRef?.child(idval!!)
 
-                var afterUpdate = Casesinfo(
+                val afterUpdate = Casesinfo(
                     intent.extras!!.getString("Id")!!,
                     update_case_view.et1caseNum.text.toString(),
                     update_case_view.et2caseYear.text.toString(),
@@ -122,7 +122,7 @@ class caseDetail : AppCompatActivity() {
                     tools.strToEpoch(update_case_view.et7caseSessionDate.text.toString()).toString(),
                     update_case_view.et8casePapers.text.toString(),
                     update_case_view.et9caseNotes.text.toString(),
-                    (LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd EEEE HH-mm"))),
+                    (LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd EEEE HH-mm"))) + " via SuperCaseApp",
                     0
                 )
 
@@ -158,9 +158,9 @@ class caseDetail : AppCompatActivity() {
             }
             update_case_view.delbtn.setOnClickListener {
 
-                var childRef = mRef?.child(intent.extras!!.getString("Id")!!)
+                val childRef = mRef?.child(intent.extras!!.getString("Id")!!)
 
-                var afterUpdate = Casesinfo(
+                val afterUpdate = Casesinfo(
                     intent.extras!!.getString("Id")!!,
                     update_case_view.et1caseNum.text.toString(),
                     update_case_view.et2caseYear.text.toString(),
@@ -192,7 +192,6 @@ class caseDetail : AppCompatActivity() {
                 caseYearV.text = update_case_view.et2caseYear.text.toString()
                 caseCountV.text = update_case_view.et3caseCount.text.toString()
                 caseCountYearV.text = update_case_view.et4caseCountYear.text.toString()
-
                 caseAccuser.text = update_case_view.et5caseAccuser.text.toString()
                 caseCreater.text = update_case_view.et6caseCreater.text.toString()
                 caseSessionDate.text = update_case_view.et7caseSessionDate.text.toString()

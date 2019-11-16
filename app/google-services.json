@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "616433145095-ljmgv16k8pcenemp28o3vohlu39sl88m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rashwan.myapplication",
+            "certificate_hash": "e222ed589c4a17f229e74bcefc6606b029a4855d"
+          }
+        },
+        {
           "client_id": "616433145095-2erlb2eprtgc2h61nnkovpmefefnpv0h.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
