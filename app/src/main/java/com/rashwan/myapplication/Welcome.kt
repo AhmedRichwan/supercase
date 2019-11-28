@@ -2,6 +2,8 @@ package com.rashwan.myapplication
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -13,7 +15,7 @@ class Welcome : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-        supportActionBar?.hide()
+//        supportActionBar?.hide()
         setContentView(R.layout.activity_welcome)
         btnsignup.setOnClickListener {
 
@@ -31,9 +33,9 @@ class Welcome : AppCompatActivity() {
                     ?.addOnCompleteListener {
                         if (it.isSuccessful) {
                             startActivity(Intent(this, MainActivity::class.java))
-                            Toast.makeText(applicationContext,
-                                mAuth?.currentUser?.displayName.toString(),
-                                Toast.LENGTH_LONG).show()
+//                            Toast.makeText(applicationContext,
+//                                mAuth?.currentUser?.displayName.toString(),
+//                                Toast.LENGTH_LONG).show()
                         } else Toast.makeText(applicationContext,
                             it.exception.toString(),
                             Toast.LENGTH_LONG).show()
@@ -48,6 +50,32 @@ class Welcome : AppCompatActivity() {
 
             }
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if (mAuth?.currentUser !=null)
+        {
+            var cu=mAuth?.currentUser?.email.toString()
+            Toast.makeText(applicationContext,
+                "Already Login  $cu"  ,
+                Toast.LENGTH_LONG).show()
+            startActivity(Intent(this, MainActivity::class.java))
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.navigation_menu,menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        var id=item?.itemId
+        if (id==R.id.logout){
+            FirebaseAuth.getInstance().signOut()
+            startActivity(Intent(this, Welcome::class.java))
+        }
+        return true
     }
 
 

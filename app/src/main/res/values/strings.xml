@@ -27,8 +27,10 @@
 
     <string name="editandrestore">تعديل واستعادة</string>
     <string name="deleted_cases">Deleted Cases</string>
-    <string name="cw">جلسات الاسبوع الحالي</string>
-    <string name="nw">جلسات الاسبوع المقبل</string>
+    <string name="cw"> الاسبوع الحالي</string>
+    <string name="nw"> الاسبوع المقبل</string>
+    <string name="cm"> الشهر الحالي</string>
+    <string name="nm"> الشهر المقبل</string>
     <string name="all">جميع الجلسات</string>
     <string name="deletedcases">القضايا المحذوفة</string>
     <string name="edit">تعديل</string>
