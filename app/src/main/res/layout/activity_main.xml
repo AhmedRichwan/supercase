@@ -185,10 +185,10 @@
     <ProgressBar
             android:id="@+id/Pbar"
             style="@style/Widget.AppCompat.ProgressBar"
-            android:layout_width="137dp"
-            android:layout_height="160dp"
+            android:layout_width="71dp"
+            android:layout_height="91dp"
             android:progressTint="#FFFFFF"
-            android:visibility="visible"
+            android:visibility="gone"
             app:layout_anchor="@+id/new_list_view"
             app:layout_anchorGravity="center" />
 
