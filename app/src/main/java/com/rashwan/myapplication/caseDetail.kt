@@ -66,11 +66,6 @@ class caseDetail : AppCompatActivity() {
 
             et1caseNumT2.setBackgroundResource(R.drawable.background_delete)
         }
-
-
-
-
-
         inneredit.setOnClickListener {
             var sortedList = mNotelist?.sortedWith(compareBy({ it.caseSessionDate }))?.toList()
 
