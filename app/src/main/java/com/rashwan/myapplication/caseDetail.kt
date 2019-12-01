@@ -57,10 +57,6 @@ class caseDetail : AppCompatActivity() {
         caseCountV.text = intent.extras!!.getString("caseCount")
         caseCountYearV.text = intent.extras!!.getString("caseCountYear")
 
-
-
-
-
         if (deletion.toInt() == 1) {
 
 
