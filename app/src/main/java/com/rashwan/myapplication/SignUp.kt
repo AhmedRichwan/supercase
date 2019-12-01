@@ -19,7 +19,8 @@ class SignUp : AppCompatActivity() {
         btnreg.setOnClickListener {
             var email = signupemail.text.toString()
             var password = signuppass.text.toString()
-            if (email.isNotEmpty() && password.isNotEmpty()) {
+            var cpassword = csignuppass.text.toString()
+            if (email.isNotEmpty() && password.isNotEmpty() && password == cpassword) {
                 mAuth = FirebaseAuth.getInstance()
 
                 mAuth?.createUserWithEmailAndPassword(email, password)

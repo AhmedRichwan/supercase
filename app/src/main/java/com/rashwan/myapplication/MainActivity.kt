@@ -3,7 +3,6 @@ package com.rashwan.myapplication
 //import pl.kitek.rvswipetodelete.SwipeToDeleteCallback
 import android.annotation.SuppressLint
 import android.app.AlertDialog
-import android.app.Application
 import android.app.DatePickerDialog
 import android.content.Context
 import android.content.Intent
@@ -472,6 +471,7 @@ Toast.makeText(this@MainActivity,e.message.toString(),Toast.LENGTH_LONG).show()
             (id == R.id.nm) -> LVA(nm)
             (id == R.id.all) -> LVA(allbtn )
             (id == R.id.del) -> LVA(delbtn)
+            (id == R.id.exit) -> finishAffinity()
         }
         return true
     }

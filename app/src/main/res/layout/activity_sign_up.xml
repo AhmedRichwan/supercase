@@ -5,7 +5,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/bkgrnd"
-
         android:orientation="vertical"
         tools:context=".SignUp">
 
@@ -22,10 +21,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="36dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="20dp"
-                android:background="@drawable/background_rowstyle"
-                android:hint="enter your email"
+                android:background="@drawable/background_title"
+                android:hint="Enter your email"
                 android:inputType="textEmailAddress"
                 android:padding="15dp"
                 android:textColor="@color/mywhite"
@@ -37,9 +36,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="20dp"
-                android:background="@drawable/background_rowstyle"
+                android:background="@drawable/background_title"
                 android:ems="10"
                 android:hint="Enter new password"
                 android:inputType="numberPassword"
@@ -47,13 +46,45 @@
                 android:textColorHint="@color/myYellow"
                 android:textSize="20sp" />
 
-        <Button
-                android:id="@+id/btnreg"
+        <EditText
+                android:id="@+id/csignuppass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/background_title"
+                android:ems="10"
+                android:hint="Confirm password"
+                android:inputType="numberPassword"
+                android:padding="15dp"
+                android:textColorHint="@color/myYellow"
+                android:textSize="20sp" />
+
+        <Switch
+                android:id="@+id/switch1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+
+                android:background="@drawable/background_title"
+                android:padding="15dp"
+                android:text="Remember me!"
+                android:textColor="@color/mywhite"
+                android:textDirection="ltr"
+                android:textSize="20sp" />
+
+        <Button
+                android:id="@+id/btnreg"
+                android:layout_width="wrap_content"
+                android:layout_height="80dp"
+                android:layout_gravity="center_horizontal"
+                android:padding="15dp"
+
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="50dp"
+
                 android:layout_marginBottom="356dp"
                 android:background="@drawable/background_edit"
 
