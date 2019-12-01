@@ -106,7 +106,6 @@ class caseDetail : AppCompatActivity() {
                 pickDateValidation(update_case_view.et7caseSessionDate)
             }
 
-
             update_case_view.updbtn.setOnClickListener {
 
                 val childRef = mRef?.child(idval!!)
