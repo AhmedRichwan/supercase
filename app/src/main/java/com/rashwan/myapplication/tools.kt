@@ -1,10 +1,8 @@
 package com.rashwan.myapplication
 
-import java.time.Instant
-import java.time.LocalDateTime
-import java.time.ZoneId
-import java.time.ZoneOffset
+import java.time.*
 import java.time.format.DateTimeFormatter
+import java.time.temporal.ChronoUnit
 
 class tools {
 
@@ -36,7 +34,13 @@ class tools {
                   return LocalDateTime.parse(edited+"T00:00:00.000").atZone(ZoneOffset.systemDefault()).toEpochSecond()
         }
 
+        fun getDaysDif(fromDate: LocalDate, toDate: LocalDate): Long {
+            return ChronoUnit.DAYS.between(fromDate, toDate)
+        }
 
+        fun getLocalDateFromString(d: String, format: String): LocalDate {
+            return LocalDate.parse(d, DateTimeFormatter.ofPattern(format))
+        }
 //         fun dateConverter(sentVal: Any): Any {
 //
 //             if (sentVal is String) {

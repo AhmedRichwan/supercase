@@ -4,7 +4,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:background="@drawable/bkgrnd"
+        android:background="@drawable/background_welcome"
         tools:context=".Welcome">
 
     <LinearLayout
@@ -36,11 +36,15 @@
                 android:layout_width="313dp"
                 android:layout_height="41dp"
                 android:layout_marginTop="10dp"
+                android:background="@drawable/background_rowstyle"
                 android:ems="10"
                 android:hint="Enter Email"
                 android:inputType="textEmailAddress"
+                android:paddingStart="10dp"
+                android:textAlignment="center"
+
                 android:textColor="@color/mywhite"
-                android:textColorHint="@color/myYellow"
+                android:textColorHint="#C7A0A0"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.53"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -50,11 +54,14 @@
                 android:layout_width="310dp"
                 android:layout_height="42dp"
                 android:layout_marginTop="10dp"
+                android:background="@drawable/background_rowstyle"
                 android:ems="10"
                 android:hint="Enter Password"
                 android:inputType="numberPassword"
+                android:paddingStart="10dp"
+                android:textAlignment="center"
                 android:textColor="@color/mywhite"
-                android:textColorHint="@color/myYellow"
+                android:textColorHint="#C7A0A0"
                 app:layout_constraintHorizontal_bias="0.514"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
