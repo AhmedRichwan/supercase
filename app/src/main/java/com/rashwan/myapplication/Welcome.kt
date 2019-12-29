@@ -1,5 +1,4 @@
 package com.rashwan.myapplication
-
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
@@ -70,7 +69,7 @@ class Welcome : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        var id=item?.itemId
+        var id = item.itemId
         if (id==R.id.logout){
             FirebaseAuth.getInstance().signOut()
             startActivity(Intent(this, Welcome::class.java))

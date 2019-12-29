@@ -53,9 +53,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 //        supportActionBar?.hide()
         setContentView(R.layout.activity_main)
-
+        mAuth = FirebaseAuth.getInstance()
         var database: FirebaseDatabase = FirebaseDatabase.getInstance()
-        mRef = database.getReference("Cases")
+        var currentuser = mAuth?.currentUser?.email.toString()
+        var currentusertrimed = currentuser.replace("@", "")
+        currentusertrimed = currentusertrimed.replace(".", "")
+        mRef = database.getReference("Cases+$currentusertrimed")
         mNotelist = ArrayList()
         addfltbtn.setOnClickListener {
             showdialogeAddnote()
@@ -119,14 +122,14 @@ class MainActivity : AppCompatActivity() {
                         0
                     )
                     childRef!!.setValue(afterUpdate)
-                    //  if (view2.ite) {
+
                     Toast.makeText(this, "تم التعديل", Toast.LENGTH_LONG).show()
-                    //}
+
                     alertDialog.dismiss()
                 }
                 update_case_view.delbtn.setOnClickListener {
                     var childRef = mRef?.child(casy.Id!!)
-
+                    var toasthint = "deletioncase"
                     var afterUpdate = Casesinfo(
                         casy.Id!!,
                         update_case_view.et1caseNum.text.toString(),
@@ -140,14 +143,19 @@ class MainActivity : AppCompatActivity() {
                         update_case_view.et9caseNotes.text.toString(),
                         (LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd EEEE HH-mm"))) + " via SuperCaseApp",
                         if (casy.deleted == 1) {
+                            toasthint = "تم الاستعادة بنجاح"
                             0
                         } else {
+                            toasthint = "تم الحذف"
+
                             1
                         }
                     )
+
                     childRef!!.setValue(afterUpdate)
-                    //  if (view2.ite) {
-                    Toast.makeText(this, "تم الحذف", Toast.LENGTH_LONG).show()
+
+
+                    Toast.makeText(this, toasthint, Toast.LENGTH_LONG).show()
                     //}
                     alertDialog.dismiss()
 
@@ -211,7 +219,7 @@ class MainActivity : AppCompatActivity() {
 
     fun LVA(view: View) {
         Pbar.isVisible=true
-
+        TTitle.text = view.contentDescription
         val today = LocalDate.now()
         var firstdayofweek = today
         while (firstdayofweek.dayOfWeek !== DayOfWeek.SATURDAY) {
@@ -239,6 +247,7 @@ var lastdayofnextmonth =firstdayofmonth.plusMonths(1).with(TemporalAdjusters.las
 
             }
             view.id == (R.id.cwbtn) -> {
+
                 firstDayOfWeek = tools.strToEpoch(firstdayofweek.toString())
                 lastDayOfWeek = tools.strToEpoch(lastdayofweek.toString())
 
@@ -303,7 +312,16 @@ try {
 
 }catch  (e : Exception){
 Toast.makeText(this@MainActivity,e.message.toString(),Toast.LENGTH_LONG).show()
+    Pbar.isVisible = false
 }
+                if (mNotelist?.count() == 0) {
+                    Pbar.isVisible = false
+                    TTitle.text = " عفوا لا يوجد قضايا في " + view.contentDescription
+                } else {
+                    val casecount = " ( " + mNotelist?.count().toString() + " )"
+                    TTitle.text = "" + view.contentDescription + casecount
+
+                }
             }
         })
     }

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_sign_up.*
 
+
 class SignUp : AppCompatActivity() {
     var mAuth: FirebaseAuth? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,8 +25,16 @@ class SignUp : AppCompatActivity() {
                 mAuth = FirebaseAuth.getInstance()
 
                 mAuth?.createUserWithEmailAndPassword(email, password)
+
                     ?.addOnCompleteListener {
                         if (it.isSuccessful) {
+//                            val user = FirebaseAuth.getInstance().currentUser
+//
+//                            val profileUpdates =
+//                                UserProfileChangeRequest.Builder()
+//                                    .setDisplayName(mName).build()
+//
+//                            user!!.updateProfile(profileUpdates)
                             Toast.makeText(applicationContext, "Successfull", Toast.LENGTH_LONG)
                                 .show()
                         } else

@@ -3,12 +3,14 @@
 
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:background="@drawable/bkgrnd"
+        android:background="@drawable/main_background"
         android:layout_height="match_parent">
 
+
     <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="33dp"
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="5dp"
@@ -34,10 +36,11 @@
                 android:layout_weight="1"
                 android:background="@drawable/background_selected_t"
                 android:clickable="true"
+                android:contentDescription="@string/deletedcases"
                 android:onClick="LVA"
                 android:text="@string/deletedcases"
                 android:textColor="@color/mdtp_white"
-                android:textSize="12sp"
+                android:textSize="9sp"
                 android:textStyle="normal|bold|italic" />
 
         <Button
@@ -56,10 +59,11 @@
                 android:layout_marginBottom="3dp"
                 android:layout_weight="1"
                 android:background="@drawable/background_selected_t"
+                android:contentDescription="@string/nm"
                 android:onClick="LVA"
                 android:text="@string/nm"
                 android:textColor="@color/mdtp_white"
-                android:textSize="12sp"
+                android:textSize="9sp"
                 android:textStyle="normal|bold|italic" />
 
         <Button
@@ -79,10 +83,11 @@
                 android:layout_weight="1"
                 android:background="@drawable/background_selected_t"
                 android:clickable="true"
+                android:contentDescription="@string/cm"
                 android:onClick="LVA"
                 android:text="@string/cm"
                 android:textColor="@color/mdtp_white"
-                android:textSize="12sp"
+                android:textSize="9sp"
                 android:textStyle="normal|bold|italic" />
 
         <Button
@@ -101,10 +106,11 @@
                 android:layout_marginBottom="3dp"
                 android:layout_weight="1"
                 android:background="@drawable/background_selected_t"
+                android:contentDescription="@string/nw"
                 android:onClick="LVA"
                 android:text="@string/nw"
                 android:textColor="@color/mdtp_white"
-                android:textSize="12sp"
+                android:textSize="9sp"
                 android:textStyle="normal|bold|italic" />
 
         <Button
@@ -124,10 +130,11 @@
                 android:layout_weight="1"
                 android:background="@drawable/background_selected_t"
                 android:clickable="true"
+                android:contentDescription="@string/cw"
                 android:onClick="LVA"
                 android:text="@string/cw"
                 android:textColor="@color/mdtp_white"
-                android:textSize="12sp"
+                android:textSize="9sp"
                 android:textStyle="normal|bold|italic" />
 
         <Button
@@ -146,23 +153,49 @@
                 android:layout_marginBottom="3dp"
                 android:layout_weight="1"
                 android:background="@drawable/background_selected_t"
+                android:contentDescription="@string/all"
                 android:onClick="LVA"
                 android:text="@string/all"
                 android:textColor="@color/mdtp_white"
-                android:textSize="12sp"
+                android:textSize="9sp"
                 android:textStyle="normal|bold|italic" />
 
     </LinearLayout>
 
 
+    <TextView
+            android:id="@+id/TTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/background_title"
+            android:padding="5dp"
+            android:text="SuperCase"
+            android:textAlignment="center"
+            android:textColor="@color/myYellow"
+            android:textSize="25sp"
+            app:layout_anchor="@+id/linearLayout"
+            app:layout_anchorGravity="bottom|center" />
+
+    <ProgressBar
+            android:id="@+id/Pbar"
+            style="@style/Widget.AppCompat.ProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="59dp"
+            android:progressTint="@color/mywhite"
+            android:visibility="gone"
+
+            />
+
     <ListView
             android:id="@+id/new_list_view"
             android:layout_width="match_parent"
-            android:layout_height="616dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
-            android:layout_marginTop="75dp"
+            android:layout_marginTop="100dp"
             android:layout_marginEnd="1dp"
-            android:dividerHeight="5dp"
             android:paddingStart="1dp"
             android:paddingEnd="1dp">
 
@@ -181,16 +214,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.989" />
-
-    <ProgressBar
-            android:id="@+id/Pbar"
-            style="@style/Widget.AppCompat.ProgressBar"
-            android:layout_width="71dp"
-            android:layout_height="91dp"
-            android:progressTint="#FFFFFF"
-            android:visibility="gone"
-            app:layout_anchor="@+id/new_list_view"
-            app:layout_anchorGravity="center" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
