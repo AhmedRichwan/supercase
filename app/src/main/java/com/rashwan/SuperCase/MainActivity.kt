@@ -43,6 +43,14 @@ import kotlin.collections.ArrayList
 
 @Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity() {
+
+    override fun onBackPressed() {
+        var i = Intent()
+        i.action = Intent.ACTION_MAIN
+        i.addCategory(Intent.CATEGORY_HOME)
+        this.startActivity(i)
+    }
+
     var mRef: DatabaseReference? = null
     var mNotelist: ArrayList<Casesinfo>? = null
 

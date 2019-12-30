@@ -7,6 +7,18 @@
         android:layout_height="match_parent">
 
 
+    <ProgressBar
+            android:id="@+id/Pbar"
+            android:layout_width="59dp"
+            android:layout_height="82dp"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="40dp"
+            android:indeterminateDrawable="@drawable/progress"
+            android:visibility="gone"
+
+
+            />
+
     <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="wrap_content"
@@ -177,17 +189,6 @@
             android:textSize="25sp"
             app:layout_anchor="@+id/linearLayout"
             app:layout_anchorGravity="bottom|center" />
-
-    <ProgressBar
-            android:id="@+id/Pbar"
-            android:layout_width="235dp"
-            android:layout_height="292dp"
-            android:layout_marginTop="270dp"
-            android:indeterminateDrawable="@drawable/progress"
-            android:visibility="gone"
-
-
-            />
 
     <ListView
             android:id="@+id/new_list_view"

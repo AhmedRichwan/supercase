@@ -34,12 +34,15 @@ class CasesAdapter(context: Context, caseList: List<Casesinfo>) :
         if (diffDays.toInt() > 11) {
             daycount = "يوما"
         }
-        if (diffDays.toInt() == 1) {
+
+        if (diffDays.toInt() == 0) {
             view.remain.text = "جلسة اليوم!"
-        } else if (diffDays.toInt() == 2) {
+        } else if (diffDays.toInt() == 1) {
             view.remain.text = "جلسة باكر!"
-        } else if (diffDays.toInt() == 3) {
+        } else if (diffDays.toInt() == 2) {
             view.remain.text = "جلسة بعد باكر!"
+        } else if (diffDays.toInt() == 3) {
+            view.remain.text = "متبقي يومان"
         } else if (diffDays.toInt() > 0) {
             diffDays = diffDays - 1
 
@@ -47,16 +50,23 @@ class CasesAdapter(context: Context, caseList: List<Casesinfo>) :
 
         } else {
 
-            diffDays = diffDays * -1
-            diffDays = diffDays + 1
-
-            if (diffDays.toInt() > 11) {
+            if (diffDays.toInt() < -10) {
                 daycount = "يوما"
+                diffDays *= -1
+                view.remain.text = "مضى( " + diffDays.toString() + " )$daycount"
+            } else if (diffDays.toInt() == -1) {
+                view.remain.text = "جلسة الأمس"
+
+
+            } else if (diffDays.toInt() == -2) {
+                view.remain.text = "مضى يومان"
+
+            } else {
+                diffDays *= -1
+                view.remain.text = "مضى( " + diffDays.toString() + " )$daycount"
+
             }
-            view.remain.text = "مضى( " + diffDays.toString() + " )$daycount"
-
         }
-
         if (case.deleted == 1) {
             view.rowstyle.background =
                 ContextCompat.getDrawable(context, R.drawable.background_rowstyle_deleted)

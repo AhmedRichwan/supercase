@@ -4,8 +4,8 @@
     <string name="caseaddtitle">بيانات القضية </string>
     <string name="caseNum">رقم القضية  </string>
     <string name="caseYear"> عام القضية </string>
-    <string name="caseCount">رقم الحصر </string>
-    <string name="caseCountYear">عام الحصر </string>
+    <string name="caseCount">الرقم الآلي </string>
+    <string name="caseCountYear">الدائرة </string>
     <string name="caseAccuser">المتهم </string>
     <string name="caseCreater">المدعي </string>
     <string name="caseSessionDate">تاريخ الجلسة </string>

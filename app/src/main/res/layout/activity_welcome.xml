@@ -16,9 +16,8 @@
 
         <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="148dp"
-                android:layout_height="120dp"
-                android:layout_marginStart="100dp"
+                android:layout_width="wrap_content"
+                android:layout_height="170dp"
                 app:srcCompat="@drawable/header" />
 
         <TextView
@@ -40,7 +39,7 @@
                 android:ems="10"
                 android:hint="Enter Email"
                 android:inputType="textEmailAddress"
-                android:paddingStart="10dp"
+                android:layout_gravity="center"
                 android:textAlignment="center"
 
                 android:textColor="@color/mywhite"
@@ -58,7 +57,7 @@
                 android:ems="10"
                 android:hint="Enter Password"
                 android:inputType="numberPassword"
-                android:paddingStart="10dp"
+                android:layout_gravity="center"
                 android:textAlignment="center"
                 android:textColor="@color/mywhite"
                 android:textColorHint="#C7A0A0"
@@ -81,10 +80,11 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@drawable/background_title"
-                    android:text="log in"
+                    android:text="Log in"
                     android:textAllCaps="false"
                     android:textColor="@color/mywhite"
                     android:textSize="24sp"
+
                     app:layout_constraintEnd_toStartOf="@+id/btnsignup"
                     app:layout_constraintHorizontal_bias="0.229"
                     app:layout_constraintStart_toStartOf="parent" />
@@ -97,7 +97,7 @@
                     android:text="OR "
                     android:textAlignment="center"
                     android:textAllCaps="true"
-                    android:textColor="@color/mywhite"
+                    android:textColor="@color/brown"
                     android:textSize="30sp"
                     app:layout_constraintEnd_toStartOf="@+id/btnsignup"
                     app:layout_constraintHorizontal_bias="0.666"
@@ -109,13 +109,25 @@
                     android:layout_height="51dp"
                     android:layout_weight="1"
                     android:background="@drawable/background_title"
-                    android:text="sign up"
+                    android:text="Sign up"
                     android:textAllCaps="false"
                     android:textColor="@color/mywhite"
                     android:textSize="24sp"
                     app:layout_constraintEnd_toEndOf="parent" />
 
         </LinearLayout>
+
+        <Button
+                android:id="@+id/btndemo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/background_title"
+                android:text="Demo"
+                android:textAllCaps="false"
+                android:textColor="@color/mywhite"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent" />
     </LinearLayout>
 
 </RelativeLayout>

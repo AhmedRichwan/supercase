@@ -29,8 +29,8 @@ class caseDetail : AppCompatActivity() {
         var deletion = intent.extras!!.getString("deleted")!!.toInt()
         caseNum.text = "رقم القضية"
         caseYear.text = "عام القضية"
-        caseCount.text = "رقم الحصر"
-        caseCountYear.text = "عام الحصر"
+        caseCount.text = "الرقم الآلي"
+        caseCountYear.text = "الدائرة"
         caseCreater.text = intent.extras!!.getString("caseCreater")
         caseAccuser.text = intent.extras!!.getString("caseAccuser")
         casePapers.text = intent.extras!!.getString("casePapers")

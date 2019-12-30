@@ -49,6 +49,19 @@ class Welcome : AppCompatActivity() {
 
             }
         }
+
+        btndemo.setOnClickListener {
+
+
+            mAuth?.signInWithEmailAndPassword("Demo@supercase.com", "123456")
+
+
+            startActivity(Intent(this, MainActivity::class.java))
+//
+
+
+        }
+
     }
 
     override fun onStart() {
