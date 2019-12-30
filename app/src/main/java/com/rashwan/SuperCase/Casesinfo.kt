@@ -1,5 +1,4 @@
-
-package com.rashwan.myapplication
+package com.rashwan.SuperCase
 
 class Casesinfo {
      var Id: String? = null

@@ -1,4 +1,4 @@
-package com.rashwan.myapplication
+package com.rashwan.SuperCase
 
 //import pl.kitek.rvswipetodelete.SwipeToDeleteCallback
 import android.annotation.SuppressLint

@@ -1,4 +1,4 @@
-package com.rashwan.myapplication
+package com.rashwan.SuperCase
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu

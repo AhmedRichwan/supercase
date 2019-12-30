@@ -1,4 +1,4 @@
-package com.rashwan.myapplication
+package com.rashwan.SuperCase
 import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
@@ -47,6 +47,8 @@ class NotesAdapter (context: Context,caseList:List<Casesinfo>):ArrayAdapter<Case
         } else {
 
             diffDays = diffDays * -1
+            diffDays = diffDays + 1
+
             if (diffDays.toInt() > 11) {
                 daycount = "يوما"
             }

@@ -1,4 +1,4 @@
-package com.rashwan.myapplication
+package com.rashwan.SuperCase
 
 import android.os.Bundle
 import android.widget.Toast
