@@ -9,7 +9,8 @@ import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.rowstyle.view.*
 import java.time.LocalDate
 
-class NotesAdapter (context: Context,caseList:List<Casesinfo>):ArrayAdapter<Casesinfo>(context,0,caseList)
+class CasesAdapter(context: Context, caseList: List<Casesinfo>) :
+    ArrayAdapter<Casesinfo>(context, 0, caseList)
 
 {
 

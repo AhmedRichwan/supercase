@@ -305,7 +305,7 @@ try {
         var sortedList =
             mNotelist?.sortedWith(compareBy({ it.caseSessionDate }))?.toList()
 
-        val noteadapter = NotesAdapter(application, sortedList!!)
+        val noteadapter = CasesAdapter(application, sortedList!!)
         Pbar.isVisible=false
         new_list_view.adapter = noteadapter
     }
@@ -375,7 +375,7 @@ Toast.makeText(this@MainActivity,e.message.toString(),Toast.LENGTH_LONG).show()
                 )
                 mRef!!.child(id).setValue(myCase)
                 var sortedList = mNotelist?.sortedWith(compareBy({ it.caseSessionDate }))?.toList()
-                val noteadapter = NotesAdapter(application, sortedList!!)
+                val noteadapter = CasesAdapter(application, sortedList!!)
                 new_list_view.adapter = noteadapter
 
                 Toast.makeText(this, "تم اضافة الجلسة بنجاح", Toast.LENGTH_LONG).show()
