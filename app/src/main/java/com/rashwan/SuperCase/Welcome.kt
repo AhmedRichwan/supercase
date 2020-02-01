@@ -11,6 +11,13 @@ import kotlinx.android.synthetic.main.activity_welcome.*
 class Welcome : AppCompatActivity() {
     var mAuth: FirebaseAuth? = null
 
+    override fun onBackPressed() {
+        var i = Intent()
+        i.action = Intent.ACTION_MAIN
+        i.addCategory(Intent.CATEGORY_HOME)
+        this.startActivity(i)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -51,15 +58,17 @@ class Welcome : AppCompatActivity() {
         }
 
         btndemo.setOnClickListener {
+            mAuth?.signInWithEmailAndPassword("demo@supercase.com", "123456")
+                ?.addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        startActivity(Intent(this, MainActivity::class.java))
+
+                    } else Toast.makeText(applicationContext,
+                        it.exception.toString(),
+                        Toast.LENGTH_LONG).show()
 
 
-            mAuth?.signInWithEmailAndPassword("Demo@supercase.com", "123456")
-
-
-            startActivity(Intent(this, MainActivity::class.java))
-//
-
-
+                }
         }
 
     }

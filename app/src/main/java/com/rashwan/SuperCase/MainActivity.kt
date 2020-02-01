@@ -45,10 +45,7 @@ import kotlin.collections.ArrayList
 class MainActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
-        var i = Intent()
-        i.action = Intent.ACTION_MAIN
-        i.addCategory(Intent.CATEGORY_HOME)
-        this.startActivity(i)
+        finishAffinity()
     }
 
     var mRef: DatabaseReference? = null
@@ -72,7 +69,31 @@ class MainActivity : AppCompatActivity() {
             showdialogeAddnote()
 
         }
+        btnswitch.setOnCheckedChangeListener { _, isChecked ->
+            var hint = ""
 
+            if (isChecked == true) {
+                searchtext.isVisible = true
+                searchtext.isEnabled = true
+                hint = " نتيجة البحث عن" + searchtext.text
+                TTitle.isVisible = true
+
+
+            } else {
+                hint = ""
+                searchtext.isEnabled = false
+                searchtext.isVisible = true
+                TTitle.isVisible = true
+
+            }
+
+        }
+        searchtext.setOnClickListener {
+            if (btnswitch.isChecked == false) {
+                btnswitch.isChecked == true
+                TTitle.text = "تم تفعيل البحث"
+            }
+        }
         new_list_view.onItemLongClickListener =
             AdapterView.OnItemLongClickListener { p0, p1, p2, p3 ->
                 var sortedList = mNotelist?.sortedWith(compareBy({ it.caseSessionDate }))?.toList()
@@ -219,6 +240,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+
     var sortedList =
         mNotelist?.sortedWith(compareBy({ it.caseSessionDate }))?.toList()
 
@@ -227,7 +249,15 @@ class MainActivity : AppCompatActivity() {
 
     fun LVA(view: View) {
         Pbar.isVisible=true
-        TTitle.text = view.contentDescription
+        //   TTitle2.isVisible = true
+        if (btnswitch.isChecked == true) {
+            val searchtext = searchtext.text.toString()
+//            TTitle2.text ="نتيجة البحث عن " + searchtext +"."
+//Toast.makeText("نتيجة البحث عن " + searchtext +".")
+        } else {
+            //  TTitle2.isVisible = false
+
+        }
         val today = LocalDate.now()
         var firstdayofweek = today
         while (firstdayofweek.dayOfWeek !== DayOfWeek.SATURDAY) {
@@ -265,11 +295,18 @@ var lastdayofnextmonth =firstdayofmonth.plusMonths(1).with(TemporalAdjusters.las
                 lastDayOfWeek = tools.strToEpoch(lastdayofweek.toString())+ 604800
 
             }
+            view.id == (R.id.anwbtn) -> {
+                firstDayOfWeek = tools.strToEpoch(firstdayofweek.toString()) + 1209600
+                lastDayOfWeek = tools.strToEpoch(lastdayofweek.toString()) + 1209600
+
+            }
             view.id == (R.id.cm) -> {
                 firstDayOfWeek = tools.strToEpoch(firstdayofmonth.toString())
                 lastDayOfWeek = tools.strToEpoch(lastdayofmonth.toString())
 
             }
+
+
             view.id == (R.id.nm) -> {
                 firstDayOfWeek = tools.strToEpoch(lastdayofmonth.toString())+86400
                 lastDayOfWeek = tools.strToEpoch(lastdayofnextmonth.toString())
@@ -297,12 +334,21 @@ try {
         val case = n.getValue(Casesinfo::class.java)
         var checkDeleted = n.child("deleted").value
         var caseSessionDate = n.child("caseSessionDate").value.toString().toLong()
+        var casenumsearch =
+            n.child("caseNum").value.toString() + n.child("caseAccuser").value.toString() + n.child(
+                "caseCreater").value.toString() + n.child("caseCount").value.toString() + n.child("caseCountYear").value.toString() + n.child(
+                "caseCreater").value.toString()
+        var searchtxt = searchtext.text.toString()
+        if (btnswitch.isChecked == false) {
+            searchtxt = ""
+        }
         if (delStat == false) {
-            if (checkDeleted.toString() == "0" && (caseSessionDate >= firstDayOfWeek) && (caseSessionDate <= lastDayOfWeek)) {
+
+            if (checkDeleted.toString() == "0" && (caseSessionDate >= firstDayOfWeek) && (caseSessionDate <= lastDayOfWeek) && searchtxt in casenumsearch) {
                 mNotelist!!.add(0, case!!)
             }
         } else {
-            if (checkDeleted.toString() == "1" && (caseSessionDate >= firstDayOfWeek) && (caseSessionDate <= lastDayOfWeek)) {
+            if (checkDeleted.toString() == "1" && (caseSessionDate >= firstDayOfWeek) && (caseSessionDate <= lastDayOfWeek) && searchtxt in casenumsearch) {
                 mNotelist!!.add(0, case!!)
 
 
@@ -323,11 +369,30 @@ Toast.makeText(this@MainActivity,e.message.toString(),Toast.LENGTH_LONG).show()
     Pbar.isVisible = false
 }
                 if (mNotelist?.count() == 0) {
-                    Pbar.isVisible = false
-                    TTitle.text = " عفوا لا يوجد قضايا في " + view.contentDescription
+                    if (btnswitch.isChecked == true && searchtext.text.isNotEmpty() == true) {
+                        Pbar.isVisible = false
+                        TTitle.text =
+                            " عفوا لا يوجد نتائج للبحث عن ' " + searchtext.text + "  ' في " + "" + view.contentDescription
+                    } else {
+                        Pbar.isVisible = false
+                        TTitle.text = " عفوا لا يوجد قضايا في " + view.contentDescription
+                    }
+
+
                 } else {
+
                     val casecount = " ( " + mNotelist?.count().toString() + " )"
-                    TTitle.text = "" + view.contentDescription + casecount
+
+                    if (btnswitch.isChecked == true && searchtext.text.isNotEmpty() == true) {
+                        var hint =
+                            " نتيجة البحث عن ' " + searchtext.text + "  ' في " + "" + view.contentDescription + casecount
+
+                        TTitle.text = hint
+
+                    } else {
+                        TTitle.text = "" + view.contentDescription + casecount
+                    }
+
 
                 }
             }

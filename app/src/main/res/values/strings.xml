@@ -38,6 +38,8 @@
     <string name="delete">حذف</string>
     <string name="manage">ادارة</string>
     <string name="test">اختبر</string>
+    <string name="search">بحث</string>
+    <string name="anw">الاسبوع اللاحق</string>
 
 
 </resources>

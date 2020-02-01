@@ -35,7 +35,7 @@
                     android:color="@color/mywhite">
 
             </stroke>
-            <!--    <solid android:color="@color/myred" /> -->
+            <solid android:color="@color/transparentbrown" />
 
 
             <corners android:radius="20dp">

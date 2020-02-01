@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#971A237E</color>
+    <color name="colorPrimary">#BFD34F27</color>
     <color name="colorPrimaryDark">#1A237E</color>
     <color name="colorAccent">#D81B60</color>
     <color name="myblue">#1C2FDA</color>
@@ -31,6 +31,7 @@
     <color name="grey">#344E3012</color>
 
     <color name="brown">#68421401</color>
+    <color name="transparentbrown">#23880000</color>
 
 
 </resources>

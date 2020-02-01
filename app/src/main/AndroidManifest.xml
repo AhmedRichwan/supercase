@@ -3,9 +3,13 @@
         xmlns:dist="http://schemas.android.com/apk/distribution"
         package="com.rashwan.SuperCase">
 
+    <!-- Required to act as a custom watch face. -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <!-- Required for complications to receive complication data and open the provider chooser. -->
+    <uses-permission android:name="com.google.android.wearable.permission.RECEIVE_COMPLICATION_DATA" />
+
     <dist:module dist:instant="true" />
-
-
 
     <application
             android:allowBackup="true"
@@ -14,18 +18,16 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name="com.rashwan.SuperCase.SignUp"></activity>
-        <activity android:name="com.rashwan.SuperCase.Welcome">
+        <activity android:name=".SignUp" />
+        <activity android:name=".Welcome">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.rashwan.SuperCase.caseDetail" />
-        <activity android:name="com.rashwan.SuperCase.MainActivity">
-
-        </activity>
+        <activity android:name=".caseDetail" />
+        <activity android:name=".MainActivity"></activity>
 
         <meta-data
                 android:name="preloaded_fonts"
