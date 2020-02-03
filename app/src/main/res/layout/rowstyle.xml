@@ -80,7 +80,7 @@
                     android:padding="3dp"
                     android:paddingStart="20dp"
                     android:text="الوقت المتبقي"
-
+                    android:paddingEnd="8dp"
                     android:textColor="@color/mywhite"
                     android:textSize="18sp"
                     android:textStyle="bold" />
